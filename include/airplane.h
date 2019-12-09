@@ -10,6 +10,8 @@
 
     #include <SFML/Graphics.h>
 
+    #define AIRPLANE_SYMBOL         'A'
+
     typedef struct plane {
         sfVector2i departure;
         sfVector2i arrival;
