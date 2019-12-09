@@ -17,5 +17,6 @@
         unsigned int delay;
     } plane_t;
 
-
+    plane_t *plane_create(sfVector2i departure, sfVector2i arrival,
+                    unsigned int speed, unsigned int delay);
 #endif
