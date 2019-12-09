@@ -21,4 +21,5 @@
 
     plane_t *plane_create(sfVector2i departure, sfVector2i arrival,
                     unsigned int speed, unsigned int delay);
+    plane_t **get_planes_from_file(char const *file_path);
 #endif
