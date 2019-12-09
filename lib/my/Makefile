@@ -7,7 +7,7 @@
 
 CC 			= 	gcc
 
-SRC			=
+SRC			=	my_puterr.c
 
 OBJ			=	$(SRC:.c=.o)
 
