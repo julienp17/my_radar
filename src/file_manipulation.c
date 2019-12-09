@@ -12,7 +12,7 @@
 #include "file_manipulation.h"
 #include "my.h"
 
-char *get_file_buffer(char *filepath)
+char *get_file_buffer(char const *filepath)
 {
     int fd = 0;
     unsigned int file_size = get_file_size(filepath);
