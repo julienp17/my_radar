@@ -9,4 +9,6 @@
     #define MY_H_
 
     void my_puterr(char const *str);
+
+    unsigned int my_count_char(char const *str, char const to_count);
 #endif
