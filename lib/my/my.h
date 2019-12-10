@@ -14,4 +14,5 @@
 
     int my_strcmp(char const *s1, char const *s2);
     unsigned int my_count_char(char const *str, char const to_count);
+    unsigned int my_intlen(int nb);
 #endif
