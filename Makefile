@@ -14,9 +14,10 @@ MAIN_F		=	main.c
 SRC			= 	$(addprefix $(SRC_D), $(SRC_F))
 OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
-SRC_F 		=	file_manipulation.c \
+SRC_F 		=	usage.c \
 				plane.c \
 				tower.c \
+				file_manipulation.c \
 
 SRC_UT   	=	$(addprefix $(SRC_UT_D), $(SRC_UT_F))
 OBJ_UT 	 	=	$(SRC_UT:.c=.o)
