@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <SFML/Graphics.h>
-#include "airplane.h"
+#include "plane.h"
 #include "file_manipulation.h"
 #include "my.h"
 
