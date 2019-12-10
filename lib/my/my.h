@@ -16,5 +16,6 @@
     unsigned int my_count_char(char const *str, char const to_count);
     unsigned int my_intlen(int nb);
 
+    char *my_int_to_strnum(int nb);
     char *my_revstr(char *str);
 #endif
