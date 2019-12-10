@@ -15,6 +15,7 @@
     int my_strcmp(char const *s1, char const *s2);
     unsigned int my_count_char(char const *str, char const to_count);
     unsigned int my_intlen(int nb);
+    unsigned int my_strlen(char const *str);
 
     char *my_int_to_strnum(int nb);
     char *my_revstr(char *str);
