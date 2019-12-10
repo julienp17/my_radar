@@ -12,5 +12,6 @@
     void my_putstr(char const *str);
     void my_puterr(char const *str);
 
+    int my_strcmp(char const *s1, char const *s2);
     unsigned int my_count_char(char const *str, char const to_count);
 #endif
