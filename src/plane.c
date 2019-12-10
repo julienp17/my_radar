@@ -16,6 +16,18 @@
 static plane_t *add_plane_from_line(char *current_line);
 static unsigned int get_nb_planes_from_file(char const *file_path);
 
+plane_t *plane_create(sfVector2i departure, sfVector2i arrival,
+                    unsigned int speed, unsigned int delay)
+{
+    plane_t *plane = malloc(sizeof(*plane));
+
+    plane->departure = departure;
+    plane->arrival   = arrival;
+    plane->speed     = speed;
+    plane->delay     = delay;
+    return (plane);
+}
+
 plane_t **get_planes_from_file(char const *file_path)
 {
     unsigned int nb_planes = get_nb_planes_from_file(file_path);
@@ -36,12 +48,12 @@ plane_t **get_planes_from_file(char const *file_path)
     return (planes);
 }
 
-static plane_t *add_plane_from_line(char *current_line)
+plane_t *add_plane_from_line(char *current_line)
 {
     sfVector2i departure;
     sfVector2i arrival;
-    unsigned int speed;
-    unsigned int delay;
+    unsigned int speed = 0;
+    unsigned int delay = 0;
 
     departure.x = strtol(current_line, &current_line, 10);
     departure.y = strtol(current_line, &current_line, 10);
@@ -55,16 +67,4 @@ static plane_t *add_plane_from_line(char *current_line)
 static unsigned int get_nb_planes_from_file(char const *file_path)
 {
     return (my_count_char(get_file_buffer(file_path), AIRPLANE_SYMBOL));
-}
-
-plane_t *plane_create(sfVector2i departure, sfVector2i arrival,
-                    unsigned int speed, unsigned int delay)
-{
-    plane_t *plane = malloc(sizeof(*plane));
-
-    plane->departure = departure;
-    plane->arrival   = arrival;
-    plane->speed     = speed;
-    plane->delay     = delay;
-    return (plane);
 }
