@@ -11,12 +11,15 @@
     #include <SFML/Graphics.h>
 
     #define TOWER_SYMBOL            'T'
+    #define TOWER_TEXTURE_PATH      "assets/textures/tower_small.png"
 
     typedef struct tower {
-        sfVector2i pos;
-        unsigned int radius;
+        sfVector2f pos;
+        sfTexture *texture;
+        sfSprite *sprite;
+        sfCircleShape *control_area;
     } tower_t;
 
-    tower_t *tower_create(sfVector2i pos, unsigned int radius);
-    tower_t **get_towers_from_file(char const *file_path);
+    tower_t *tower_create(sfVector2f pos, unsigned int radius);
+    void tower_destroy(tower_t *tower);
 #endif
