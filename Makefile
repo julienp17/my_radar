@@ -15,19 +15,19 @@ SRC			= 	$(addprefix $(SRC_D), $(SRC_F))
 OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
 SRC_F 		=	usage.c \
-				plane.c \
-				tower.c \
-				window.c \
-				get_file_buffer.c \
-				get_entities_from_file.c \
-				simulation.c \
+				my_radar.c \
+				structures/plane.c \
+				structures/tower.c \
+				structures/window.c \
+				file_manipulation/get_file_buffer.c \
+				file_manipulation/get_entities_from_file.c \
 
 SRC_UT   	=	$(addprefix $(SRC_UT_D), $(SRC_UT_F))
 OBJ_UT 	 	=	$(SRC_UT:.c=.o)
 SRC_UT_D 	= 	tests/
 SRC_UT_F 	=
 
-INC			= 	-I./include/
+INC			= 	-I./include/ -I./include/structures
 
 CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
 
