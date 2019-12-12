@@ -16,6 +16,7 @@ OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				my_radar.c \
+				draw.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
