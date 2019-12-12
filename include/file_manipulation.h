@@ -8,6 +8,7 @@
 #ifndef FILE_MANIPULATION_H_
     #define FILE_MANIPULATION_H_
 
+    #include <stdio.h>
     #include "plane.h"
     #include "tower.h"
 
