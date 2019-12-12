@@ -17,7 +17,9 @@ SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				plane.c \
 				tower.c \
+				window.c \
 				file_manipulation.c \
+				simulation.c \
 
 SRC_UT   	=	$(addprefix $(SRC_UT_D), $(SRC_UT_F))
 OBJ_UT 	 	=	$(SRC_UT:.c=.o)
@@ -26,11 +28,11 @@ SRC_UT_F 	=
 
 INC			= 	-I./include/
 
-CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS)
+CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
 
 DBFLAGS		=	-g -g3 -ggdb
 
-LDFLAGS 	=	-L./lib -lmy
+LDFLAGS 	=	-L./lib -lmy -lcsfml-graphics
 
 LDFLAGS_UT	= 	-lcriterion -lgcov --coverage
 
@@ -41,7 +43,7 @@ NAME_UT 	= 	unit_tests
 all: $(NAME)
 
 $(NAME):	makelib $(OBJ) $(OBJ_M)
-	$(CC) -o $(NAME) $(OBJ) $(OBJ_M) $(CFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(OBJ_M) $(CFLAGS) $(DBFLAGS)
 
 makelib:
 	make -C ./lib/my/ all
