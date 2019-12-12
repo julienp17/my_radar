@@ -14,6 +14,8 @@
     #define OPEN_FAILURE_MSG        "File cannot be opened\n"
     #define READ_FAILURE_MSG        "File cannot be read\n"
 
+    #define TOWER_TEXTURE_PATH      "assets/textures/tower_small.png"
+
     char *get_file_buffer(char const *file_path);
     unsigned int get_file_size(char const *file_path);
 
