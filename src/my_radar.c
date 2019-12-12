@@ -22,6 +22,7 @@ void poll_events(sfRenderWindow *window, sfEvent *event);
 
 int launch_simulation(char const *file_path)
 {
+    sim_t = simulation_create(file_path);
     window_t *window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
     plane_t **planes = NULL;
     tower_t **towers = NULL;
