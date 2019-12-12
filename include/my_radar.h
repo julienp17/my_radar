@@ -9,7 +9,14 @@
     #define MY_RADAR_H_
 
     #include <SFML/Graphics.h>
+    #include "plane.h"
+    #include "tower.h"
+    #include "window.h"
 
-    int launch_simulation(char const *file_path);
-    void poll_events(sfRenderWindow *window, sfEvent *event);
+    int my_radar(char const *file_path);
+    int init_simulation(char const *file_path, window_t **window,
+                        plane_t ***planes, tower_t ***towers);
+    void simulation_loop(window_t *window, plane_t **planes, tower_t **towers);
+    void destroy_all(window_t *window, plane_t **planes, tower_t **towers);
+    void poll_events(sfRenderWindow *window);
 #endif
