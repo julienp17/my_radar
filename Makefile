@@ -18,7 +18,8 @@ SRC_F 		=	usage.c \
 				plane.c \
 				tower.c \
 				window.c \
-				file_manipulation.c \
+				get_file_buffer.c \
+				get_entities_from_file.c \
 				simulation.c \
 
 SRC_UT   	=	$(addprefix $(SRC_UT_D), $(SRC_UT_F))
