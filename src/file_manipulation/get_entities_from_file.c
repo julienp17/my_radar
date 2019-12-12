@@ -77,7 +77,7 @@ plane_t *add_plane_from_line(char *current_line)
 
 tower_t *add_tower_from_line(char *current_line)
 {
-    sfVector2i pos;
+    sfVector2f pos;
     unsigned int radius = 0;
 
     pos.x  = my_strtol(current_line, &current_line);
