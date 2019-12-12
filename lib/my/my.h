@@ -13,6 +13,7 @@
     void my_puterr(char const *str);
 
     int my_strcmp(char const *s1, char const *s2);
+    int my_strtol(char *str, char **endptr);
     unsigned int my_count_char(char const *str, char const to_count);
     unsigned int my_intlen(int nb);
     unsigned int my_strlen(char const *str);

@@ -16,6 +16,7 @@ SRC			=	my_count_char.c    \
 				my_revstr.c        \
 				my_strcmp.c        \
 				my_strlen.c        \
+				my_strtol.c        \
 
 OBJ			=	$(SRC:.c=.o)
 
