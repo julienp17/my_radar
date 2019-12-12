@@ -5,6 +5,7 @@
 ** Functions to open and read a file
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
