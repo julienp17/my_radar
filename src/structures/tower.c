@@ -12,7 +12,7 @@
 tower_t *tower_create(sfVector2f pos, unsigned int radius)
 {
     tower_t *tower = malloc(sizeof(*tower));
-    sfVector2f circle_pos = {pos.x - radius, pos.y - radius};
+    sfVector2f circle_pos = {pos.x + 20 - radius, pos.y + 20 - radius};
 
     tower->pos          = pos;
     tower->texture      = sfTexture_createFromFile(TOWER_TEXTURE_PATH, NULL);
@@ -22,7 +22,7 @@ tower_t *tower_create(sfVector2f pos, unsigned int radius)
     sfSprite_setPosition(tower->sprite, tower->pos);
     sfCircleShape_setRadius(tower->control_area, radius);
     sfCircleShape_setFillColor(tower->control_area, sfTransparent);
-    sfCircleShape_setOutlineColor(tower->control_area, sfWhite);
+    sfCircleShape_setOutlineColor(tower->control_area, sfBlue);
     sfCircleShape_setOutlineThickness(tower->control_area, 2.0);
     sfCircleShape_setPosition(tower->control_area, circle_pos);
     return (tower);
