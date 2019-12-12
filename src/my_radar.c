@@ -60,9 +60,12 @@ void poll_events(sfRenderWindow *window)
 {
     sfEvent event;
 
-    while (sfRenderWindow_pollEvent(window, &event))
-        if (event.type == sfEvtClosed || event.key.code == sfKeyEscape)
+    while (sfRenderWindow_pollEvent(window, &event)) {
+        if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
+        if (event.key.code == sfKeyEscape || event.key.code == sfKeyQ)
+            sfRenderWindow_close(window);
+    }
 }
 
 void destroy_all(window_t *window, plane_t **planes, tower_t **towers)
