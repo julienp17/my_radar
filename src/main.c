@@ -7,6 +7,8 @@
 
 #include "usage.h"
 
+int launch_simulation(char const *file_path);
+
 int main(int ac, char **av)
 {
     int error_code = 0;
@@ -16,5 +18,6 @@ int main(int ac, char **av)
         return (MY_EXIT_SUCCESS);
     else if (error_code == MY_EXIT_FAILURE)
         return (error_code);
-    return (MY_EXIT_SUCCESS);
+    error_code = launch_simulation(av[1]);
+    return (error_code);
 }
