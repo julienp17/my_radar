@@ -5,9 +5,8 @@
 ** Main file for my_radar
 */
 
+#include "my_radar.h"
 #include "usage.h"
-
-int launch_simulation(char const *file_path);
 
 int main(int ac, char **av)
 {
@@ -18,6 +17,6 @@ int main(int ac, char **av)
         return (MY_EXIT_SUCCESS);
     else if (error_code == MY_EXIT_FAILURE)
         return (error_code);
-    error_code = launch_simulation(av[1]);
+    error_code = my_radar(av[1]);
     return (error_code);
 }
