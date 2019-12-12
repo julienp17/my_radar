@@ -5,47 +5,73 @@
 ** simulation
 */
 
-#include <stdio.h>
-#include <stdbool.h>
-#include <stddef.h>
+#include <stdlib.h>
 #include <SFML/Graphics.h>
+#include "usage.h"
+#include "my_radar.h"
 #include "file_manipulation.h"
-#include "tower.h"
 #include "window.h"
 #include "plane.h"
-#include "usage.h"
+#include "tower.h"
 
-void poll_events(sfRenderWindow *window, sfEvent *event);
 // void draw_towers(sfRenderWindow *window, tower_t **towers);
 // static void init_towers(sfTexture **texture, sfSprite **sprite,
 //                         sfCircleShape **control_area);
 
-int launch_simulation(char const *file_path)
+int my_radar(char const *file_path)
 {
-    sim_t = simulation_create(file_path);
-    window_t *window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
+    window_t *window = NULL;
     plane_t **planes = NULL;
     tower_t **towers = NULL;
-    sfEvent event;
 
-    if (get_entities_from_file(file_path, &planes, &towers) == -1)
+    if (init_simulation(file_path, &window, &planes,&towers) == MY_EXIT_FAILURE)
         return (MY_EXIT_FAILURE);
+    simulation_loop(window, planes, towers);
+    destroy_all(window, planes, towers);
+    return (MY_EXIT_SUCCESS);
+}
+
+int init_simulation(char const *file_path, window_t **window, plane_t ***planes,
+                    tower_t ***towers)
+{
+    *window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
+
+    if (!(*window))
+        return (MY_EXIT_FAILURE);
+    if (get_entities_from_file(file_path, planes, towers) == -1)
+        return (MY_EXIT_FAILURE);
+    return (MY_EXIT_SUCCESS);
+}
+
+void simulation_loop(window_t *window, plane_t **planes, tower_t **towers)
+{
+    (void)planes;
+    (void)towers;
     while (sfRenderWindow_isOpen(window->window)) {
-        poll_events(window->window, &event);
+        poll_events(window->window);
         sfRenderWindow_clear(window->window, sfWhite);
         sfRenderWindow_drawSprite(window->window, window->background_sprite,
                                     NULL);
         sfRenderWindow_display(window->window);
     }
-    window_destroy(window);
-    return (MY_EXIT_SUCCESS);
 }
 
-void poll_events(sfRenderWindow *window, sfEvent *event)
+void poll_events(sfRenderWindow *window)
 {
-    while (sfRenderWindow_pollEvent(window, event))
-        if (event->type == sfEvtClosed || event->key.code == sfKeyEscape)
+    sfEvent event;
+
+    while (sfRenderWindow_pollEvent(window, &event))
+        if (event.type == sfEvtClosed || event.key.code == sfKeyEscape)
             sfRenderWindow_close(window);
+}
+
+void destroy_all(window_t *window, plane_t **planes, tower_t **towers)
+{
+    window_destroy(window);
+    for (unsigned int i = 0 ; planes[i] ; i++)
+        free(planes[i]);
+    for (unsigned int i = 0 ; towers[i] ; i++)
+        free(towers[i]);
 }
 
 // void draw_towers(sfRenderWindow *window, tower_t **towers)
