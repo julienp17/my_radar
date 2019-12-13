@@ -61,8 +61,8 @@ int fill_entities_by_line(FILE *stream, plane_t ***planes, tower_t ***towers)
 
 plane_t *add_plane_from_line(char *current_line)
 {
-    sfVector2i departure;
-    sfVector2i arrival;
+    sfVector2f departure;
+    sfVector2f arrival;
     unsigned int speed = 0;
     unsigned int delay = 0;
 
