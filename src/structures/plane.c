@@ -9,14 +9,19 @@
 #include <SFML/Graphics.h>
 #include "plane.h"
 
-plane_t *plane_create(sfVector2i departure, sfVector2i arrival,
+plane_t *plane_create(sfVector2f departure, sfVector2f arrival,
                     unsigned int speed, unsigned int delay)
 {
     plane_t *plane   = malloc(sizeof(*plane));
 
-    plane->departure = departure;
-    plane->arrival   = arrival;
+    plane->pos       = departure;
+    plane->end       = arrival;
+    plane->rect      = (sfIntRect) {departure.x, departure.y, 20, 20};
     plane->speed     = speed;
     plane->delay     = delay;
+    plane->texture   = sfTexture_createFromFile(PLANE_TEXTURE_PATH,
+                                                &(plane->rect));
+    plane->sprite    = sfSprite_create();
+    sfSprite_setTexture(plane->sprite, plane->texture, sfTrue);
     return (plane);
 }
