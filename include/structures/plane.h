@@ -19,11 +19,13 @@
         sfVector2f end;
         unsigned int speed;
         unsigned int delay;
+        sfVector2f step;
         sfTexture *texture;
         sfSprite *sprite;
     } plane_t;
 
     plane_t *plane_create(sfVector2f departure, sfVector2f arrival,
                     unsigned int speed, unsigned int delay);
-    plane_t **get_planes_from_file(char const *file_path);
+    void plane_update_pos(plane_t *plane);
+    sfVector2f get_step_offset(sfVector2f point_a, sfVector2f point_b);
 #endif
