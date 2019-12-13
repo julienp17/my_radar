@@ -15,7 +15,7 @@
     #define W_BPP           32
     #define W_MAX_FPS       30
     #define W_TITLE         "my_radar"
-    #define BACKGROUND_PATH "assets/backgrounds/world_map_smaller.png"
+    #define BACKGROUND_PATH "assets/backgrounds/real_world_map_small.png"
 
     typedef struct window {
         sfRenderWindow *window;
