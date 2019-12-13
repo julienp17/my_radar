@@ -11,7 +11,7 @@
     #include <SFML/Graphics.h>
 
     #define PLANE_SYMBOL            'A'
-    #define PLANE_TEXTURE_PATH      "assets/textures/plane_small.png"
+    #define PLANE_TEXTURE_PATH      "assets/textures/plane2_small.png"
 
     typedef struct plane {
         sfIntRect rect;
