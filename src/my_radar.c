@@ -9,12 +9,11 @@
 #include <SFML/Graphics.h>
 #include "usage.h"
 #include "my_radar.h"
+#include "draw.h"
 #include "file_manipulation.h"
 #include "window.h"
 #include "plane.h"
 #include "tower.h"
-
-void draw_towers(sfRenderWindow *window, tower_t **towers);
 
 int my_radar(char const *file_path)
 {
@@ -43,14 +42,13 @@ int init_simulation(char const *file_path, window_t **window, plane_t ***planes,
 
 void simulation_loop(window_t *window, plane_t **planes, tower_t **towers)
 {
-    (void)planes;
-    (void)towers;
     while (sfRenderWindow_isOpen(window->window)) {
         poll_events(window->window);
         sfRenderWindow_clear(window->window, sfWhite);
         sfRenderWindow_drawSprite(window->window, window->background_sprite,
                                     NULL);
         draw_towers(window->window, towers);
+        draw_planes(window->window, planes);
         sfRenderWindow_display(window->window);
     }
 }
