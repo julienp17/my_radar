@@ -34,7 +34,7 @@ CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
 
 DBFLAGS		=	-g -g3 -ggdb
 
-LDFLAGS 	=	-L./lib -lmy -lcsfml-graphics
+LDFLAGS 	=	-L./lib -lmy -lcsfml-graphics -lm
 
 LDFLAGS_UT	= 	-lcriterion -lgcov --coverage
 
