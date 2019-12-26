@@ -27,5 +27,6 @@
 
     window_t *window_create(unsigned int width, unsigned int height,
                             char const *title);
+    void window_poll_quit(sfRenderWindow *window);
     void window_destroy(window_t *window);
 #endif

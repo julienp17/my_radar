@@ -35,3 +35,15 @@ void window_destroy(window_t *window)
     sfSprite_destroy(window->background_sprite);
     free(window);
 }
+
+void window_poll_quit(sfRenderWindow *window)
+{
+    sfEvent event;
+
+    while (sfRenderWindow_pollEvent(window, &event)) {
+        if (event.type == sfEvtClosed)
+            sfRenderWindow_close(window);
+        if (event.key.code == sfKeyEscape || event.key.code == sfKeyQ)
+            sfRenderWindow_close(window);
+    }
+}
