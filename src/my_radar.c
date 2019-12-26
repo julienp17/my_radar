@@ -31,7 +31,7 @@ int my_radar(char const *file_path)
 int init_simulation(char const *file_path, window_t **window, plane_t ***planes,
                     tower_t ***towers)
 {
-    *window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
+    *window = window_create(W_WIDTH, W_HEIGHT, W_TITLE, BACKGROUND_PATH);
 
     if (!(*window))
         return (MY_EXIT_FAILURE);
@@ -45,7 +45,7 @@ void simulation_loop(window_t *window, plane_t **planes, tower_t **towers)
     while (sfRenderWindow_isOpen(window->window)) {
         window_poll_quit(window->window);
         sfRenderWindow_clear(window->window, sfWhite);
-        sfRenderWindow_drawSprite(window->window, window->background_sprite,
+        sfRenderWindow_drawSprite(window->window, window->bg_sprite,
                                     NULL);
         draw_towers(window->window, towers);
         draw_planes(window->window, planes);
