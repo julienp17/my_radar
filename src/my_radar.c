@@ -43,25 +43,13 @@ int init_simulation(char const *file_path, window_t **window, plane_t ***planes,
 void simulation_loop(window_t *window, plane_t **planes, tower_t **towers)
 {
     while (sfRenderWindow_isOpen(window->window)) {
-        poll_events(window->window);
+        window_poll_quit(window->window);
         sfRenderWindow_clear(window->window, sfWhite);
         sfRenderWindow_drawSprite(window->window, window->background_sprite,
                                     NULL);
         draw_towers(window->window, towers);
         draw_planes(window->window, planes);
         sfRenderWindow_display(window->window);
-    }
-}
-
-void poll_events(sfRenderWindow *window)
-{
-    sfEvent event;
-
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
-        if (event.key.code == sfKeyEscape || event.key.code == sfKeyQ)
-            sfRenderWindow_close(window);
     }
 }
 
