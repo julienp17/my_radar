@@ -10,8 +10,8 @@
 
     #include <SFML/Graphics.h>
 
-    #define W_WIDTH         1366
-    #define W_HEIGHT        768
+    #define W_WIDTH         2560
+    #define W_HEIGHT        1440
     #define W_BPP           32
     #define W_MAX_FPS       30
     #define W_TITLE         "my_radar"
@@ -21,12 +21,12 @@
         sfRenderWindow *window;
         sfIntRect area;
         sfVector2f center;
-        sfTexture *background_texture;
-        sfSprite *background_sprite;
+        sfTexture *bg_texture;
+        sfSprite *bg_sprite;
     } window_t;
 
     window_t *window_create(unsigned int width, unsigned int height,
-                            char const *title);
+                            char const *title, char const *bg_img_path);
     void window_poll_quit(sfRenderWindow *window);
     void window_destroy(window_t *window);
 #endif
