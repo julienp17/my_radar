@@ -19,9 +19,7 @@ window_t *window_create(unsigned int width, unsigned int height,
         return (NULL);
     window->window = sfRenderWindow_create(mode, title, sfClose | sfFullscreen,
                                             NULL);
-    window->area = (sfIntRect) {0, 0, width, height};
-    window->center = (sfVector2f) {(float)width / 2.0, (float)height / 2.0};
-    window->bg_texture = sfTexture_createFromFile(bg_img_path, &(window->area));
+    window->bg_texture = sfTexture_createFromFile(bg_img_path, NULL);
     window->bg_sprite = sfSprite_create();
     sfSprite_setTexture(window->bg_sprite, window->bg_texture, sfTrue);
     sfRenderWindow_setFramerateLimit(window->window, W_MAX_FPS);
