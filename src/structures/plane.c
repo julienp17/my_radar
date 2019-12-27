@@ -39,11 +39,11 @@ void plane_destroy(plane_t *plane)
 
 void plane_update_pos(plane_t *plane)
 {
-    if (plane->path->diff.x > 1 && plane->path->diff.y > 1) {
+    if (plane->path->diff.x > 1.0 && plane->path->diff.y > 1.0) {
         plane->path->pos.x  += plane->path->step.x;
         plane->path->pos.y  += plane->path->step.y;
-        plane->path->diff.x += plane->path->step.x;
-        plane->path->diff.y += plane->path->step.y;
+        plane->path->diff.x -= abs((int)(plane->path->step.x));
+        plane->path->diff.y -= abs((int)(plane->path->step.y));
         sfSprite_move(plane->sprite, plane->path->step);
     }
 }
