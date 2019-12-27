@@ -15,6 +15,7 @@ SRC			= 	$(addprefix $(SRC_D), $(SRC_F))
 OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
 SRC_F 		=	usage.c \
+				menu.c \
 				my_radar.c \
 				draw.c \
 				structures/plane.c \
