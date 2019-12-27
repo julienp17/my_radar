@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <SFML/System.h>
 #include "sim.h"
 #include "file_manipulation.h"
 #include "window.h"
@@ -19,6 +20,7 @@ sim_t *sim_create_from_script(char const *filepath)
     if (!sim)
         return (NULL);
     sim->window = window_create(W_WIDTH, W_HEIGHT, W_TITLE, SIM_BG_IMG_PATH);
+    sim->clock  = sfClock_create();
     sim->plane_texture = sfTexture_createFromFile(SIM_PLANE_TEXTURE_PATH, NULL);
     sim->tower_texture = sfTexture_createFromFile(SIM_TOWER_TEXTURE_PATH, NULL);
     sim->planes = NULL;

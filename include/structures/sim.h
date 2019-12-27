@@ -8,6 +8,7 @@
 #ifndef SIM_H_
     #define SIM_H_
 
+    #include <SFML/Graphics.h>
     #include "window.h"
     #include "plane.h"
     #include "tower.h"
@@ -22,6 +23,7 @@
         tower_t **towers;
         sfTexture *plane_texture;
         sfTexture *tower_texture;
+        sfClock *clock;
     } sim_t;
 
     sim_t *sim_create_from_script(char const *filepath);
