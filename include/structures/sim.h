@@ -12,7 +12,7 @@
     #include "plane.h"
     #include "tower.h"
 
-    #define SIM_BG_IMG_PATH        "assets/backgrounds/real_world_map_small.png"
+    #define SIM_BG_IMG_PATH        "assets/backgrounds/1440p/world_map_1440.png"
     #define SIM_PLANE_TEXTURE_PATH "assets/textures/plane2_small.png"
     #define SIM_TOWER_TEXTURE_PATH "assets/textures/tower_small.png"
 
