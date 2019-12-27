@@ -19,10 +19,15 @@ plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay)
         return (NULL);
     plane->path   = path;
     plane->delay  = delay;
-    plane->sprite = sfSprite_create();
-    sfSprite_setTexture(plane->sprite, texture, sfTrue);
-    sfSprite_setPosition(plane->sprite, plane->path->pos);
-    sfSprite_rotate(plane->sprite,
+    plane->hitbox = sfRectangleShape_create();
+    if (!(plane->hitbox))
+        return (NULL);
+    sfRectangleShape_setSize(plane->hitbox, (sfVector2f) {20.0, 20.0});
+    sfRectangleShape_setOutlineColor(plane->hitbox, sfYellow);
+    sfRectangleShape_setOutlineThickness(plane->hitbox, 2.0);
+    sfRectangleShape_setTexture(plane->hitbox, texture, sfTrue);
+    sfRectangleShape_setPosition(plane->hitbox, plane->path->pos);
+    sfRectangleShape_rotate(plane->hitbox,
                 get_angle_from_coordinate(plane->path->end, plane->path->pos));
     return (plane);
 }
@@ -31,8 +36,8 @@ void plane_destroy(plane_t *plane)
 {
     if (plane->path)
         free(plane->path);
-    if (plane->sprite)
-        sfSprite_destroy(plane->sprite);
+    if (plane->hitbox)
+        sfRectangleShape_destroy(plane->hitbox);
     if (plane)
         free(plane);
 }
@@ -44,7 +49,7 @@ void plane_update_pos(plane_t *plane)
         plane->path->pos.y  += plane->path->step.y;
         plane->path->diff.x -= abs((int)(plane->path->step.x));
         plane->path->diff.y -= abs((int)(plane->path->step.y));
-        sfSprite_move(plane->sprite, plane->path->step);
+        sfRectangleShape_move(plane->hitbox, plane->path->step);
     }
 }
 

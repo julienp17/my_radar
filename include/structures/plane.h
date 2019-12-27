@@ -15,8 +15,8 @@
 
     typedef struct plane {
         path_t *path;
-        sfSprite *sprite;
         unsigned int delay;
+        sfRectangleShape *hitbox;
     } plane_t;
 
     plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay);
