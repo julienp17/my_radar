@@ -20,6 +20,8 @@ SRC_F 		=	usage.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
+				structures/sim.c \
+				structures/path.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
 
