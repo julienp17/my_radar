@@ -8,33 +8,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "file_manipulation.h"
+#include "sim.h"
 #include "plane.h"
+#include "path.h"
 #include "tower.h"
 #include "my.h"
 
-int get_entities_from_file(char const *file_path, plane_t ***planes,
-                            tower_t ***towers)
+int get_entities_from_file(char const *file_path, sim_t *sim)
 {
-    unsigned int nb_planes = get_nb_entities_from_file(file_path, PLANE_SYMBOL);
-    unsigned int nb_towers = get_nb_entities_from_file(file_path, TOWER_SYMBOL);
+    char *file_buffer = get_file_buffer(file_path);
+    unsigned int nb_planes = my_count_char(file_buffer, PLANE_SYMBOL);
+    unsigned int nb_towers = my_count_char(file_buffer, TOWER_SYMBOL);
     FILE *stream = fopen(file_path, "r");
 
-    (*planes) = malloc(sizeof(*planes) * (nb_planes + 1));
-    (*towers) = malloc(sizeof(*towers) * (nb_towers + 1));
-    if (fill_entities_by_line(stream, planes, towers) == -1)
-        return (-1);
+    if (!stream)
+        return (1);
+    sim->planes = malloc(sizeof(plane_t *) * (nb_planes + 1));
+    sim->towers = malloc(sizeof(tower_t *) * (nb_towers + 1));
+    if (!(sim->planes) || !(sim->towers))
+        return (1);
+    if (fill_entities_by_line(stream, sim) != 0)
+        return (1);
     fclose(stream);
     return (0);
 }
 
-unsigned int get_nb_entities_from_file(char const *file_path, char const symbol)
-{
-    char *file_buffer = get_file_buffer(file_path);
-
-    return (my_count_char(file_buffer, symbol));
-}
-
-int fill_entities_by_line(FILE *stream, plane_t ***planes, tower_t ***towers)
+int fill_entities_by_line(FILE *stream, sim_t *sim)
 {
     char *current_line = NULL;
     long unsigned int size = 50;
@@ -43,45 +42,49 @@ int fill_entities_by_line(FILE *stream, plane_t ***planes, tower_t ***towers)
 
     while (getline(&current_line, &size, stream) != -1) {
         if (current_line[0] == PLANE_SYMBOL) {
-            current_line++;
-            (*planes)[plane_index] = add_plane_from_line(current_line);
-            plane_index++;
+            sim->planes[plane_index++] = add_plane_from_line(current_line,
+                                                            sim->plane_texture);
         } else if (current_line[0] == TOWER_SYMBOL) {
-            current_line++;
-            (*towers)[tower_index] = add_tower_from_line(current_line);
-            tower_index++;
+            sim->towers[tower_index++] = add_tower_from_line(current_line,
+                                                            sim->tower_texture);
         } else {
-            return (-1);
+            my_puterr("Unknow char in script file\n");
+            return (1);
         }
     }
-    (*planes)[plane_index] = NULL;
-    (*towers)[tower_index] = NULL;
+    sim->planes[plane_index] = NULL;
+    sim->towers[tower_index] = NULL;
     return (0);
 }
 
-plane_t *add_plane_from_line(char *current_line)
+plane_t *add_plane_from_line(char *current_line, sfTexture *plane_texture)
 {
+    path_t *path = NULL;
     sfVector2f departure;
     sfVector2f arrival;
     unsigned int speed = 0;
     unsigned int delay = 0;
 
+    current_line++;
     departure.x = my_strtol(current_line, &current_line);
     departure.y = my_strtol(current_line, &current_line);
     arrival.x   = my_strtol(current_line, &current_line);
     arrival.y   = my_strtol(current_line, &current_line);
     speed       = my_strtol(current_line, &current_line);
     delay       = my_strtol(current_line, &current_line);
-    return (plane_create(departure, arrival, speed, delay));
+    if ((path = path_create(departure, arrival, speed)) == NULL)
+        return (NULL);
+    return (plane_create(path, plane_texture, delay));
 }
 
-tower_t *add_tower_from_line(char *current_line)
+tower_t *add_tower_from_line(char *current_line, sfTexture *tower_texture)
 {
     sfVector2f pos;
     unsigned int radius = 0;
 
+    current_line++;
     pos.x  = my_strtol(current_line, &current_line);
     pos.y  = my_strtol(current_line, &current_line);
     radius = my_strtol(current_line, &current_line);
-    return (tower_create(pos, radius));
+    return (tower_create(pos, tower_texture, radius));
 }
