@@ -13,6 +13,8 @@
     #include "tower.h"
     #include "window.h"
 
+    #define MENU_BG_IMG_PATH   "assets/backgrounds/1440p/menu_image_3.jpg"
+
     int my_radar(char const *file_path);
     int init_simulation(char const *file_path, window_t **window,
                         plane_t ***planes, tower_t ***towers);
