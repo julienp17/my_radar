@@ -9,16 +9,17 @@
 #include <SFML/Graphics.h>
 #include "tower.h"
 
-tower_t *tower_create(sfVector2f pos, unsigned int radius)
+tower_t *tower_create(sfVector2f pos, sfTexture *texture, unsigned int radius)
 {
     tower_t *tower = malloc(sizeof(*tower));
     sfVector2f circle_pos = {pos.x + 20 - radius, pos.y + 20 - radius};
 
+    if (!tower)
+        return (NULL);
     tower->pos          = pos;
-    tower->texture      = sfTexture_createFromFile(TOWER_TEXTURE_PATH, NULL);
     tower->sprite       = sfSprite_create();
     tower->control_area = sfCircleShape_create();
-    sfSprite_setTexture(tower->sprite, tower->texture, sfTrue);
+    sfSprite_setTexture(tower->sprite, texture, sfTrue);
     sfSprite_setPosition(tower->sprite, tower->pos);
     sfCircleShape_setRadius(tower->control_area, radius);
     sfCircleShape_setFillColor(tower->control_area, sfTransparent);
@@ -30,7 +31,6 @@ tower_t *tower_create(sfVector2f pos, unsigned int radius)
 
 void tower_destroy(tower_t *tower)
 {
-    sfTexture_destroy(tower->texture);
     sfSprite_destroy(tower->sprite);
     sfCircleShape_destroy(tower->control_area);
     free(tower);
