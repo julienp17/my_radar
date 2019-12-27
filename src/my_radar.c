@@ -11,53 +11,27 @@
 #include "my_radar.h"
 #include "draw.h"
 #include "file_manipulation.h"
-#include "window.h"
-#include "plane.h"
-#include "tower.h"
+#include "sim.h"
 
-int my_radar(char const *file_path)
+int my_radar(char const *script_path)
 {
-    window_t *window = NULL;
-    plane_t **planes = NULL;
-    tower_t **towers = NULL;
+    sim_t *sim = sim_create_from_script(script_path);
 
-    if (init_simulation(file_path, &window, &planes,&towers) == MY_EXIT_FAILURE)
+    if (sim == NULL)
         return (MY_EXIT_FAILURE);
-    simulation_loop(window, planes, towers);
-    destroy_all(window, planes, towers);
-    return (MY_EXIT_SUCCESS);
-}
-
-int init_simulation(char const *file_path, window_t **window, plane_t ***planes,
-                    tower_t ***towers)
-{
-    *window = window_create(W_WIDTH, W_HEIGHT, W_TITLE, BACKGROUND_PATH);
-
-    if (!(*window))
-        return (MY_EXIT_FAILURE);
-    if (get_entities_from_file(file_path, planes, towers) == -1)
-        return (MY_EXIT_FAILURE);
-    return (MY_EXIT_SUCCESS);
-}
-
-void simulation_loop(window_t *window, plane_t **planes, tower_t **towers)
-{
-    while (sfRenderWindow_isOpen(window->window)) {
-        window_poll_quit(window->window);
-        sfRenderWindow_clear(window->window, sfWhite);
-        sfRenderWindow_drawSprite(window->window, window->bg_sprite,
-                                    NULL);
-        draw_towers(window->window, towers);
-        draw_planes(window->window, planes);
-        sfRenderWindow_display(window->window);
+    while (sfRenderWindow_isOpen(sim->window->window)) {
+        window_poll_quit(sim->window->window);
+        sfRenderWindow_clear(sim->window->window, sfWhite);
+        simulation_loop(sim);
+        sfRenderWindow_display(sim->window->window);
     }
+    sim_destroy(sim);
+    return (MY_EXIT_SUCCESS);
 }
 
-void destroy_all(window_t *window, plane_t **planes, tower_t **towers)
+void simulation_loop(sim_t *sim)
 {
-    window_destroy(window);
-    for (unsigned int i = 0 ; planes[i] ; i++)
-        free(planes[i]);
-    for (unsigned int i = 0 ; towers[i] ; i++)
-        tower_destroy(towers[i]);
+    sfRenderWindow_drawSprite(sim->window->window,sim->window->bg_sprite, NULL);
+    draw_towers(sim->window->window, sim->towers);
+    draw_planes(sim->window->window, sim->planes);
 }
