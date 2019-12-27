@@ -12,5 +12,5 @@
     #include "tower.h"
 
     void draw_towers(sfRenderWindow *window, tower_t **towers);
-    void draw_planes(sfRenderWindow *window, plane_t **planes);
+    void draw_planes(sfRenderWindow *window, plane_t **planes, sfClock *clock);
 #endif

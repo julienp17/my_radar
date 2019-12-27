@@ -17,10 +17,12 @@ void draw_towers(sfRenderWindow *window, tower_t **towers)
     }
 }
 
-void draw_planes(sfRenderWindow *window, plane_t **planes)
+void draw_planes(sfRenderWindow *window, plane_t **planes, sfClock *clock)
 {
     for (unsigned int i = 0 ; planes[i] ; i++) {
-        plane_update_pos(planes[i]);
-        sfRenderWindow_drawSprite(window, planes[i]->sprite, NULL);
+        if (sfTime_asSeconds(sfClock_getElapsedTime(clock)) > planes[i]->delay){
+            plane_update_pos(planes[i]);
+            sfRenderWindow_drawSprite(window, planes[i]->sprite, NULL);
+        }
     }
 }

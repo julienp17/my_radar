@@ -33,5 +33,5 @@ void simulation_loop(sim_t *sim)
 {
     sfRenderWindow_drawSprite(sim->window->window,sim->window->bg_sprite, NULL);
     draw_towers(sim->window->window, sim->towers);
-    draw_planes(sim->window->window, sim->planes);
+    draw_planes(sim->window->window, sim->planes, sim->clock);
 }
