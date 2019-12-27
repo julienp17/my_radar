@@ -17,6 +17,6 @@ int main(int ac, char **av)
         return (MY_EXIT_SUCCESS);
     else if (error_code == MY_EXIT_FAILURE)
         return (error_code);
-    //error_code = my_radar(av[1]);
+    error_code = my_radar(av[1]);
     return (error_code);
 }
