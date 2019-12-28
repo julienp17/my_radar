@@ -18,6 +18,7 @@ SRC_F 		=	usage.c \
 				my_radar.c \
 				draw.c \
 				events.c \
+				utils.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
