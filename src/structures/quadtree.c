@@ -17,6 +17,7 @@ quadtree_t *quadtree_create(sfIntRect boundary)
         return (NULL);
     quadtree->boundary = boundary;
     quadtree->children = NULL;
+    quadtree->is_divided = sfFalse;
     quadtree->nb_planes = 0;
     quadtree->planes = malloc(sizeof(plane_t *) * (QT_CAPACITY + 1));
     if (!(quadtree->planes))
@@ -47,10 +48,9 @@ int quadtree_insert(quadtree_t *quadtree, plane_t *plane)
         quadtree->nb_planes++;
         return (0);
     }
-    if (!(quadtree->is_divided)) {
-        if (quadtree_subdivide(&quadtree) == 0)
-            quadtree->is_divided = sfTrue;
-    }
+    if (!(quadtree->is_divided))
+        if (quadtree_subdivide(&quadtree) != 0)
+            return (-1);
     for (unsigned int i = 0 ; i < 4 ; i++)
         if (quadtree_insert(quadtree->children[i], plane) == 0) {
             quadtree->nb_planes++;
@@ -80,19 +80,6 @@ int quadtree_subdivide(quadtree_t **quadtree)
     for (unsigned int i = 0 ; i < 4 ; i++)
         if ((*quadtree)->children[i] == NULL)
             return (1);
+    (*quadtree)->is_divided = sfTrue;
     return (0);
-}
-
-void quadtree_draw_bounds(sfRenderWindow *window, quadtree_t *quadtree)
-{
-    sfRectangleShape *boundary = sfRectangleShape_create();
-
-    sfRectangleShape_setFillColor(boundary, sfTransparent);
-    sfRectangleShape_setOutlineColor(boundary, sfWhite);
-    sfRectangleShape_setOutlineThickness(boundary, 2.0);
-    sfRenderWindow_drawRectangleShape(window, boundary, NULL);
-    if (quadtree->is_divided)
-        for (unsigned int i = 0 ; i < 4 ; i++)
-            quadtree_draw(window, quadtree->children[i]);
-    sfRectangleShape_destroy(boundary);
 }
