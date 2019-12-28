@@ -13,6 +13,6 @@
     #include "tower.h"
 
     void draw_towers(sfRenderWindow *window, tower_t **towers);
-    void draw_planes(sfRenderWindow *window, plane_t **planes, sfClock *clock);
     void draw_pause_menu(window_t *window);
+    void draw_timer(window_t *window, sfClock *clock);
 #endif
