@@ -12,6 +12,7 @@
 #include "sim.h"
 #include "draw.h"
 #include "events.h"
+#include "utils.h"
 
 int my_radar(char const *script_path)
 {
@@ -45,7 +46,7 @@ void plane_loop(plane_t *plane, sim_t *sim)
     if (plane->delay > (sfTime_asSeconds(sfClock_getElapsedTime(sim->clock))))
         return;
     sfRenderWindow_drawRectangleShape(sim->window->window, plane->hitbox, NULL);
-    if (plane->path->diff.x > 1.0 && plane->path->diff.y > 1.0)
+    if (!(pos_are_near(plane->path->pos, plane->path->end, 10.0)))
         plane_move(plane, plane->path->step);
     else
         plane_reset_random(plane, sim->towers, sim->clock);
