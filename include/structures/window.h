@@ -18,6 +18,8 @@
 
     typedef struct window {
         sfRenderWindow *window;
+        unsigned int width;
+        unsigned int height;
         sfTexture *bg_texture;
         sfSprite *bg_sprite;
     } window_t;
