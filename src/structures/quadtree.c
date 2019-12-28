@@ -38,6 +38,20 @@ void quadtree_destroy(quadtree_t *quadtree)
         free(quadtree);
 }
 
+void quadtree_clear(quadtree_t *quadtree)
+{
+    if (quadtree->is_divided) {
+        for (unsigned int i = 0 ; quadtree->children[i] ; i++) {
+            quadtree_clear(quadtree->children[i]);
+            quadtree_destroy(quadtree->children[i]);
+        }
+        quadtree->is_divided = sfFalse;
+    }
+    for (unsigned int i = 0 ; quadtree->planes[i] ; i++)
+        plane_destroy(quadtree->planes[i]);
+    quadtree->nb_planes = 0;
+}
+
 int quadtree_insert(quadtree_t *quadtree, plane_t *plane)
 {
     if (!(sfIntRect_contains(&(quadtree->boundary),
