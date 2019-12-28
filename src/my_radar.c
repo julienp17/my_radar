@@ -35,5 +35,18 @@ void simulation_loop(sim_t *sim)
 {
     sfRenderWindow_drawSprite(sim->window->window,sim->window->bg_sprite, NULL);
     draw_towers(sim->window->window, sim->towers);
-    draw_planes(sim->window->window, sim->planes, sim->clock);
+    for (unsigned int i = 0 ; sim->planes[i] ; i++)
+        plane_loop(sim->planes[i], sim);
+    draw_timer(sim->window, sim->clock);
+}
+
+void plane_loop(plane_t *plane, sim_t *sim)
+{
+    if (plane->delay > (sfTime_asSeconds(sfClock_getElapsedTime(sim->clock))))
+        return;
+    sfRenderWindow_drawRectangleShape(sim->window->window, plane->hitbox, NULL);
+    if (plane->path->diff.x > 1.0 && plane->path->diff.y > 1.0)
+        plane_move(plane, plane->path->step);
+    else
+        plane_reset_random(plane, sim->towers, sim->clock);
 }
