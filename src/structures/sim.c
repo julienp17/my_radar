@@ -20,13 +20,16 @@ sim_t *sim_create_from_script(char const *filepath)
     if (!sim)
         return (NULL);
     sim->window = window_create(W_WIDTH, W_HEIGHT, W_TITLE, SIM_BG_IMG_PATH);
+    sim->quadtree = quadtree_create((sfIntRect) {0, 0, W_WIDTH, W_HEIGHT});
     sim->clock  = sfClock_create();
     sim->is_paused = sfFalse;
     sim->plane_texture = sfTexture_createFromFile(SIM_PLANE_TEXTURE_PATH, NULL);
     sim->tower_texture = sfTexture_createFromFile(SIM_TOWER_TEXTURE_PATH, NULL);
     sim->planes = NULL;
     sim->towers = NULL;
-    if (!(sim->window) || !(sim->plane_texture) || !(sim->tower_texture))
+    if (!(sim->window) || !(sim->quadtree))
+        return (NULL);
+    if (!(sim->plane_texture) || !(sim->tower_texture))
         return (NULL);
     if (get_entities_from_file(filepath, sim) == -1)
         return (NULL);
