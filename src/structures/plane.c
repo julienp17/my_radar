@@ -9,6 +9,7 @@
 #include <math.h>
 #include <SFML/Graphics.h>
 #include "plane.h"
+#include "utils.h"
 
 plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay)
 {
@@ -61,7 +62,7 @@ void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock)
         free(plane->path);
     new_beg = get_random_tower_pos(towers);
     new_end = get_random_tower_pos(towers);
-    while (vector2f_match(new_beg, new_end))
+    while (pos_match(new_beg, new_end))
         new_end = get_random_tower_pos(towers);
     plane->delay = c_time + rand() % 10;
     plane->path = path_create(new_beg, new_end, new_speed);
@@ -69,17 +70,4 @@ void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock)
     sfRectangleShape_setRotation(plane->hitbox, 0.0);
     sfRectangleShape_rotate(plane->hitbox,
                 get_angle_from_coordinate(plane->path->end, plane->path->pos));
-}
-
-float get_angle_from_coordinate(sfVector2f point_a, sfVector2f point_b)
-{
-    float dx = point_b.x - point_a.x;
-    float dy = point_b.y - point_a.y;
-    float radians = atan2f(dx, dy);
-
-    if (radians < 0.0)
-        radians = fabs(radians);
-    else
-        radians = 2 * M_PI - radians;
-    return (180.0 / M_PI * radians);
 }

@@ -19,6 +19,8 @@ tower_t *tower_create(sfVector2f pos, sfTexture *texture, unsigned int radius)
     tower->pos          = pos;
     tower->sprite       = sfSprite_create();
     tower->control_area = sfCircleShape_create();
+    if (!(tower->sprite) || !(tower->control_area))
+        return (NULL);
     sfSprite_setTexture(tower->sprite, texture, sfTrue);
     sfSprite_setPosition(tower->sprite, tower->pos);
     sfCircleShape_setRadius(tower->control_area, radius);
@@ -44,9 +46,4 @@ sfVector2f get_random_tower_pos(tower_t **towers)
     for (nb_towers = 0 ; towers[nb_towers] ; nb_towers++);
     random_tower_pos = (towers[rand() % nb_towers])->pos;
     return (random_tower_pos);
-}
-
-sfBool vector2f_match(sfVector2f pos_1, sfVector2f pos_2)
-{
-    return (pos_1.x == pos_2.x && pos_1.y == pos_2.x);
 }
