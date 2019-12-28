@@ -44,6 +44,8 @@ void sim_destroy(sim_t *sim)
         tower_destroy(sim->towers[i]);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_destroy(sim->planes[i]);
+    if (sim->quadtree)
+        quadtree_destroy(sim->quadtree);
     if (sim->plane_texture)
         sfTexture_destroy(sim->plane_texture);
     if (sim->tower_texture)
