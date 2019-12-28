@@ -35,3 +35,18 @@ void tower_destroy(tower_t *tower)
     sfCircleShape_destroy(tower->control_area);
     free(tower);
 }
+
+sfVector2f get_random_tower_pos(tower_t **towers)
+{
+    unsigned int nb_towers = 0;
+    sfVector2f random_tower_pos;
+
+    for (nb_towers = 0 ; towers[nb_towers] ; nb_towers++);
+    random_tower_pos = (towers[rand() % nb_towers])->pos;
+    return (random_tower_pos);
+}
+
+sfBool vector2f_match(sfVector2f pos_1, sfVector2f pos_2)
+{
+    return (pos_1.x == pos_2.x && pos_1.y == pos_2.x);
+}
