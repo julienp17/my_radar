@@ -24,7 +24,7 @@ tower_t *tower_create(sfVector2f pos, sfTexture *texture, unsigned int radius)
     sfCircleShape_setRadius(tower->control_area, radius);
     sfCircleShape_setFillColor(tower->control_area, sfTransparent);
     sfCircleShape_setOutlineColor(tower->control_area, sfBlue);
-    sfCircleShape_setOutlineThickness(tower->control_area, 2.0);
+    sfCircleShape_setOutlineThickness(tower->control_area, radius / 25);
     sfCircleShape_setPosition(tower->control_area, circle_pos);
     return (tower);
 }
