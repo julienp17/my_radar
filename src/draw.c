@@ -29,7 +29,7 @@ void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree)
 
     sfRectangleShape_setFillColor(boundary, sfTransparent);
     sfRectangleShape_setOutlineColor(boundary, sfWhite);
-    sfRectangleShape_setOutlineThickness(boundary, 100.0);
+    sfRectangleShape_setOutlineThickness(boundary, 2.0);
     draw_quadtree_recursively(window, quadtree, boundary);
     sfRectangleShape_destroy(boundary);
 }
