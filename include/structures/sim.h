@@ -10,6 +10,7 @@
 
     #include <SFML/Graphics.h>
     #include "window.h"
+    #include "quadtree.h"
     #include "plane.h"
     #include "tower.h"
 
@@ -19,6 +20,7 @@
 
     typedef struct simulation {
         window_t *window;
+        quadtree_t *quadtree;
         plane_t **planes;
         tower_t **towers;
         sfTexture *plane_texture;
