@@ -24,6 +24,7 @@
         sfTexture *plane_texture;
         sfTexture *tower_texture;
         sfClock *clock;
+        sfBool is_paused;
     } sim_t;
 
     sim_t *sim_create_from_script(char const *filepath);
