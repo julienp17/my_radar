@@ -5,11 +5,11 @@
 ** Source file for airplane structure
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <SFML/Graphics.h>
 #include "plane.h"
+#include "utils.h"
 
 plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay)
 {
@@ -19,10 +19,15 @@ plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay)
         return (NULL);
     plane->path   = path;
     plane->delay  = delay;
-    plane->sprite = sfSprite_create();
-    sfSprite_setTexture(plane->sprite, texture, sfTrue);
-    sfSprite_setPosition(plane->sprite, plane->path->pos);
-    sfSprite_rotate(plane->sprite,
+    plane->hitbox = sfRectangleShape_create();
+    if (!(plane->hitbox))
+        return (NULL);
+    sfRectangleShape_setSize(plane->hitbox, (sfVector2f) {20.0, 20.0});
+    sfRectangleShape_setOutlineColor(plane->hitbox, sfYellow);
+    sfRectangleShape_setOutlineThickness(plane->hitbox, 2.0);
+    sfRectangleShape_setTexture(plane->hitbox, texture, sfTrue);
+    sfRectangleShape_setPosition(plane->hitbox, plane->path->pos);
+    sfRectangleShape_rotate(plane->hitbox,
                 get_angle_from_coordinate(plane->path->end, plane->path->pos));
     return (plane);
 }
@@ -31,32 +36,38 @@ void plane_destroy(plane_t *plane)
 {
     if (plane->path)
         free(plane->path);
-    if (plane->sprite)
-        sfSprite_destroy(plane->sprite);
+    if (plane->hitbox)
+        sfRectangleShape_destroy(plane->hitbox);
     if (plane)
         free(plane);
 }
 
-void plane_update_pos(plane_t *plane)
+void plane_move(plane_t *plane, sfVector2f const offset)
 {
-    if (plane->path->diff.x > 1.0 && plane->path->diff.y > 1.0) {
-        plane->path->pos.x  += plane->path->step.x;
-        plane->path->pos.y  += plane->path->step.y;
-        plane->path->diff.x -= abs((int)(plane->path->step.x));
-        plane->path->diff.y -= abs((int)(plane->path->step.y));
-        sfSprite_move(plane->sprite, plane->path->step);
-    }
+    plane->path->pos.x  += offset.x;
+    plane->path->pos.y  += offset.y;
+    plane->path->diff.x -= abs((int)(offset.x));
+    plane->path->diff.y -= abs((int)(offset.y));
+    sfRectangleShape_move(plane->hitbox, offset);
 }
 
-float get_angle_from_coordinate(sfVector2f point_a, sfVector2f point_b)
+void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock)
 {
-    float dx = point_b.x - point_a.x;
-    float dy = point_b.y - point_a.y;
-    float radians = atan2f(dx, dy);
+    sfInt32 c_time = sfTime_asSeconds(sfClock_getElapsedTime(clock));
+    sfVector2f new_beg;
+    sfVector2f new_end;
+    unsigned int new_speed = rand() % (6 + 1 - 3) + 3;
 
-    if (radians < 0.0)
-        radians = fabs(radians);
-    else
-        radians = 2 * M_PI - radians;
-    return (180.0 / M_PI * radians);
+    if (plane->path)
+        free(plane->path);
+    new_beg = get_random_tower_pos(towers);
+    new_end = get_random_tower_pos(towers);
+    while (pos_match(new_beg, new_end))
+        new_end = get_random_tower_pos(towers);
+    plane->delay = c_time + rand() % 10;
+    plane->path = path_create(new_beg, new_end, new_speed);
+    sfRectangleShape_setPosition(plane->hitbox, plane->path->pos);
+    sfRectangleShape_setRotation(plane->hitbox, 0.0);
+    sfRectangleShape_rotate(plane->hitbox,
+                get_angle_from_coordinate(plane->path->end, plane->path->pos));
 }

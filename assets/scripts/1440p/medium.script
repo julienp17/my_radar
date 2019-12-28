@@ -1,0 +1,35 @@
+A 630 415 2070 550 4 3      // USA          ->    china
+A 630 415 930 850 4 2       // USA          ->    brazil
+A 630 415 1180 390 5 2      // USA          ->    spain
+A 630 415 2265 1160 5 1     // USA          ->    australia
+A 630 415 1380 220 4 3      // USA          ->    estonia
+A 680 1150 930 850 3 3      // chile        ->    brazil
+A 680 1150 1370 1120 2 4    // chile        ->    south africa
+A 930 850 1180 390 4 2      // brazil       ->    spain
+A 930 850 1370 1120 4 3     // brazil       ->    south africa
+A 930 850 1590 540 4 2      // brazil       ->    dubai
+A 1180 390 1590 540 4 1     // spain        ->    dubai
+A 1180 390 2265 1160 5 1    // spain        ->    australia
+A 1370 1120 630 415 4 1     // south africa ->    USA
+A 1370 1120 2070 550 3 3    // south africa ->    china
+A 1370 1120 1550 750 3 2    // south africa ->    somalia
+A 1380 220 1180 390 2 2     // estonia      ->    spain
+A 1550 750 1590 540 1 3     // somalia      ->    dubai
+A 1590 540 630 415 6 2      // dubai        ->    USA
+A 1590 540 930 850 5 4      // dubai        ->    brazil
+A 2070 550 630 415 4 5      // china        ->    USA
+A 2070 550 1370 1120 3 3    // china        ->    south africa
+A 2070 550 1180 390 4 1     // china        ->    spain
+A 2070 550 2265 1160 3 3    // china        ->    australia
+A 2265 1160 630 415 4 3     // australia    ->    USA
+A 2265 1160 2070 550 5 3    // australia    ->    china
+T 630 415 130               // USA
+T 680 1150 50               // chile
+T 930 850 85                // brazil
+T 1180 390 110              // spain
+T 1370 1120 85              // south africa
+T 1380 220 50               // estonia
+T 1550 750 65               // somalia
+T 1590 540 90               // dubai
+T 2070 550 120              // china
+T 2265 1160 60              // australia

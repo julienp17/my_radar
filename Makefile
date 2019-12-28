@@ -17,6 +17,8 @@ SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				my_radar.c \
 				draw.c \
+				events.c \
+				utils.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
@@ -36,7 +38,7 @@ CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
 
 DBFLAGS		=	-g -g3 -ggdb
 
-LDFLAGS 	=	-L./lib -lmy -lcsfml-graphics -lm
+LDFLAGS 	=	-L./lib -lmy -lcsfml-graphics -lcsfml-system -lm
 
 LDFLAGS_UT	= 	-lcriterion -lgcov --coverage
 

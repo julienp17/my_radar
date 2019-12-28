@@ -21,4 +21,6 @@
     tower_t *tower_create(sfVector2f pos, sfTexture *texture,
                         unsigned int radius);
     void tower_destroy(tower_t *tower);
+    sfVector2f get_random_tower_pos(tower_t **towers);
+    sfBool vector2f_match(sfVector2f pos_1, sfVector2f pos2);
 #endif

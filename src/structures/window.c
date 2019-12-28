@@ -19,6 +19,8 @@ window_t *window_create(unsigned int width, unsigned int height,
         return (NULL);
     window->window = sfRenderWindow_create(mode, title, sfClose | sfFullscreen,
                                             NULL);
+    window->width = width;
+    window->height = height;
     window->bg_texture = sfTexture_createFromFile(bg_img_path, NULL);
     window->bg_sprite = sfSprite_create();
     sfSprite_setTexture(window->bg_sprite, window->bg_texture, sfTrue);
@@ -32,16 +34,4 @@ void window_destroy(window_t *window)
     sfTexture_destroy(window->bg_texture);
     sfSprite_destroy(window->bg_sprite);
     free(window);
-}
-
-void window_poll_quit(sfRenderWindow *window)
-{
-    sfEvent event;
-
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
-        if (event.key.code == sfKeyEscape || event.key.code == sfKeyQ)
-            sfRenderWindow_close(window);
-    }
 }
