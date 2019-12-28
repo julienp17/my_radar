@@ -46,8 +46,6 @@ void plane_move(plane_t *plane, sfVector2f const offset)
 {
     plane->path->pos.x  += offset.x;
     plane->path->pos.y  += offset.y;
-    plane->path->diff.x -= abs((int)(offset.x));
-    plane->path->diff.y -= abs((int)(offset.y));
     sfRectangleShape_move(plane->hitbox, offset);
 }
 

@@ -18,8 +18,6 @@ path_t *path_create(sfVector2f beg, sfVector2f end, unsigned int speed)
         return (NULL);
     path->pos     = beg;
     path->end     = end;
-    path->diff.x  = abs((int)end.x - (int)beg.x);
-    path->diff.y  = abs((int)end.y - (int)beg.y);
     path->step    = get_step_offset(beg, end);
     path->step.x *= speed;
     path->step.y *= speed;
