@@ -26,3 +26,15 @@ void draw_planes(sfRenderWindow *window, plane_t **planes, sfClock *clock)
         }
     }
 }
+
+void draw_pause_menu(sfRenderWindow *window)
+{
+    sfRectangleShape *pause_menu = sfRectangleShape_create();
+    sfColor pause_color = (sfColor) {50, 50, 50, 125};
+
+    sfRectangleShape_setFillColor(pause_menu, pause_color);
+    sfRectangleShape_setSize(pause_menu, (sfVector2f) {2560, 1440});
+    sfRenderWindow_drawRectangleShape(window, pause_menu, NULL);
+    sfRenderWindow_display(window);
+    sfRectangleShape_destroy(pause_menu);
+}

@@ -13,4 +13,5 @@
 
     void draw_towers(sfRenderWindow *window, tower_t **towers);
     void draw_planes(sfRenderWindow *window, plane_t **planes, sfClock *clock);
+    void draw_pause_menu(sfRenderWindow *window);
 #endif
