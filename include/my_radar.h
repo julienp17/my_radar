@@ -13,4 +13,5 @@
 
     int my_radar(char const *script_path);
     void simulation_loop(sim_t *sim);
+    void plane_loop(plane_t *plane, sim_t *sim);
 #endif
