@@ -22,6 +22,7 @@ SRC_F 		=	usage.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
+				structures/quadtree.c \
 				structures/sim.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
