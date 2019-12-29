@@ -13,7 +13,6 @@
     typedef struct path {
         sfVector2f pos;
         sfVector2f end;
-        sfVector2f diff;
         sfVector2f step;
     } path_t;
 
