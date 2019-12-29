@@ -39,7 +39,7 @@ void simulation_loop(sim_t *sim)
     draw_towers(sim->window->window, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim);
-    draw_quadtree(sim->window->window, sim->quadtree);
+    //draw_quadtree(sim->window->window, sim->quadtree);
     draw_timer(sim->window, sim->clock);
 }
 
