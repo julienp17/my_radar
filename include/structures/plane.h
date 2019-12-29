@@ -17,12 +17,14 @@
     typedef struct plane {
         path_t *path;
         unsigned int delay;
-        sfRectangleShape *hitbox;
+        float angle;
+        sfIntRect hitbox;
+        sfSprite *sprite;
+        sfRectangleShape *outline;
     } plane_t;
 
     plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay);
     void plane_destroy(plane_t *plane);
     void plane_move(plane_t *plane, sfVector2f const offset);
     void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock);
-    float get_angle_from_coordinate(sfVector2f point_a, sfVector2f point_b);
 #endif
