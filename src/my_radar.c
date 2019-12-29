@@ -48,7 +48,8 @@ void plane_loop(plane_t *plane, sim_t *sim)
     if (plane->delay > (sfTime_asSeconds(sfClock_getElapsedTime(sim->clock))))
         return;
     quadtree_insert(sim->quadtree, plane);
-    sfRenderWindow_drawRectangleShape(sim->window->window, plane->hitbox, NULL);
+    sfRenderWindow_drawSprite(sim->window->window, plane->sprite, NULL);
+    sfRenderWindow_drawRectangleShape(sim->window->window,plane->outline, NULL);
     if (!(pos_are_near(plane->path->pos, plane->path->end, 10.0)))
         plane_move(plane, plane->path->step);
     else
