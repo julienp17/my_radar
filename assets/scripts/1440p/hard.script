@@ -1,0 +1,70 @@
+A 1430 390 1550 750 3 1 // turkey -> somalia
+A 680 1150 1430 390 6 4 // chile -> turkey
+A 1430 500 1590 540 4 1 // egypt -> dubai
+A 1790 680 1430 390 4 1 // india -> turkey
+A 1790 680 930 850 5 2 // india -> brazil
+A 1430 390 930 850 6 4 // turkey -> brazil
+A 1560 1000 1095 650 3 2 // madagascar -> senegal
+A 660 730 2070 550 3 1 // colombia -> china
+A 1380 220 1590 540 5 3 // estonia -> dubai
+A 2265 1160 680 1150 5 1 // australia -> chile
+A 1590 540 2070 550 3 3 // dubai -> china
+A 1370 1120 1590 540 6 5 // africa -> dubai
+A 450 580 1430 390 6 4 // mexico -> turkey
+A 1790 680 2015 855 5 5 // india -> indonesia
+A 1095 650 680 1150 5 0 // senegal -> chile
+A 1095 650 2070 550 3 5 // senegal -> china
+A 1430 390 660 730 4 0 // turkey -> colombia
+A 1430 500 1095 650 6 0 // egypt -> senegal
+A 1370 1120 1380 220 4 5 // africa -> estonia
+A 450 580 2265 1160 4 5 // mexico -> australia
+A 1180 390 1550 750 4 4 // spain -> somalia
+A 1380 220 1790 680 5 3 // estonia -> india
+A 450 580 630 415 3 1 // mexico -> USA
+A 1590 540 1430 390 4 3 // dubai -> turkey
+A 1370 1120 1550 750 5 0 // africa -> somalia
+A 1095 650 2265 1160 4 5 // senegal -> australia
+A 660 730 1095 650 6 3 // colombia -> senegal
+A 2070 550 450 580 4 5 // china -> mexico
+A 2015 855 1430 390 6 0 // indonesia -> turkey
+A 660 730 1095 650 6 0 // colombia -> senegal
+A 1370 1120 1380 220 4 2 // africa -> estonia
+A 1790 680 1260 730 6 4 // india -> nigeria
+A 2015 855 2070 550 4 5 // indonesia -> china
+A 840 1060 1430 500 4 0 // argentina -> egypt
+A 1430 390 630 415 6 0 // turkey -> USA
+A 1180 390 680 1150 4 4 // spain -> chile
+A 840 1060 1180 390 3 3 // argentina -> spain
+A 1260 730 630 415 6 4 // nigeria -> USA
+A 1590 540 1180 390 4 3 // dubai -> spain
+A 1550 750 680 1150 3 3 // somalia -> chile
+A 660 730 1260 730 3 4 // colombia -> nigeria
+A 1790 680 930 850 3 2 // india -> brazil
+A 1180 390 630 415 3 3 // spain -> USA
+A 840 1060 1180 390 4 5 // argentina -> spain
+A 2265 1160 1560 1000 5 5 // australia -> madagascar
+A 840 1060 930 850 3 4 // argentina -> brazil
+A 1095 650 630 415 6 4 // senegal -> USA
+A 1380 220 1180 390 5 2 // estonia -> spain
+A 1260 730 1590 540 3 4 // nigeria -> dubai
+A 1430 500 1560 1000 3 3 // egypt -> madagascar
+T 450 580 90                // mexico
+T 630 415 130               // USA
+T 660 730 70                // colombia
+T 680 1150 60               // chile
+T 840 1060 75               // argentina
+T 930 850 85                // brazil
+T 1095 650 75               // senegal
+T 1180 390 110              // spain
+T 1260 730 75               // nigeria
+T 1370 1120 85              // south africa
+T 1380 220 50               // estonia
+T 1430 390 75               // turkey
+T 1430 500 80               // egypt
+T 1550 750 65               // somalia
+T 1560 1000 50              // madagascar
+T 1590 540 90               // dubai
+T 1790 680 100              // india
+T 2015 855 90               // indonesia
+T 2070 550 120              // china
+T 2265 1160 80              // australia
