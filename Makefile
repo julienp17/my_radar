@@ -19,9 +19,12 @@ SRC_F 		=	usage.c \
 				draw.c \
 				events.c \
 				utils.c \
+				booleans/boundary.c \
+				booleans/pos.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
+				structures/quadtree.c \
 				structures/sim.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
@@ -30,7 +33,10 @@ SRC_F 		=	usage.c \
 SRC_UT   	=	$(addprefix $(SRC_UT_D), $(SRC_UT_F))
 OBJ_UT 	 	=	$(SRC_UT:.c=.o)
 SRC_UT_D 	= 	tests/
-SRC_UT_F 	=
+SRC_UT_F 	=	test_boundary_overlaps.c \
+				test_pos_match.c \
+				test_pos_are_near.c \
+				test_boundary_contains_pos.c \
 
 INC			= 	-I./include/ -I./include/structures
 

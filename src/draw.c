@@ -9,7 +9,11 @@
 #include "window.h"
 #include "tower.h"
 #include "plane.h"
+#include "quadtree.h"
 #include "my.h"
+
+static void draw_quadtree_recursively(sfRenderWindow *window,
+                            quadtree_t *quadtree, sfRectangleShape *boundary);
 
 void draw_towers(sfRenderWindow *window, tower_t **towers)
 {
@@ -17,6 +21,33 @@ void draw_towers(sfRenderWindow *window, tower_t **towers)
         sfRenderWindow_drawSprite(window, towers[i]->sprite, NULL);
         sfRenderWindow_drawCircleShape(window, towers[i]->control_area, NULL);
     }
+}
+
+void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree)
+{
+    sfRectangleShape *boundary = sfRectangleShape_create();
+
+    sfRectangleShape_setFillColor(boundary, sfTransparent);
+    sfRectangleShape_setOutlineColor(boundary, sfWhite);
+    sfRectangleShape_setOutlineThickness(boundary, 2.0);
+    draw_quadtree_recursively(window, quadtree, boundary);
+    sfRectangleShape_destroy(boundary);
+}
+
+static void draw_quadtree_recursively(sfRenderWindow *window,
+                            quadtree_t *quadtree, sfRectangleShape *boundary)
+{
+    sfVector2f boundary_pos  = {quadtree->boundary.left,
+                                quadtree->boundary.top};
+    sfVector2f boundary_size = {quadtree->boundary.width,
+                                quadtree->boundary.height};
+
+    sfRectangleShape_setPosition(boundary, boundary_pos);
+    sfRectangleShape_setSize(boundary, boundary_size);
+    sfRenderWindow_drawRectangleShape(window, boundary, NULL);
+    if (quadtree->is_divided)
+        for (unsigned int i = 0 ; i < 4 ; i++)
+            draw_quadtree_recursively(window, quadtree->children[i], boundary);
 }
 
 void draw_pause_menu(window_t *window)

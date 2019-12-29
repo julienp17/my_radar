@@ -35,9 +35,11 @@ int my_radar(char const *script_path)
 void simulation_loop(sim_t *sim)
 {
     sfRenderWindow_drawSprite(sim->window->window,sim->window->bg_sprite, NULL);
+    quadtree_clear(sim->quadtree);
     draw_towers(sim->window->window, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim);
+    draw_quadtree(sim->window->window, sim->quadtree);
     draw_timer(sim->window, sim->clock);
 }
 
@@ -45,6 +47,7 @@ void plane_loop(plane_t *plane, sim_t *sim)
 {
     if (plane->delay > (sfTime_asSeconds(sfClock_getElapsedTime(sim->clock))))
         return;
+    quadtree_insert(sim->quadtree, plane);
     sfRenderWindow_drawRectangleShape(sim->window->window, plane->hitbox, NULL);
     if (!(pos_are_near(plane->path->pos, plane->path->end, 10.0)))
         plane_move(plane, plane->path->step);
