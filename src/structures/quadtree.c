@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 #include "quadtree.h"
+#include "utils.h"
 
 quadtree_t *quadtree_create(sfIntRect boundary)
 {
@@ -43,8 +44,7 @@ void quadtree_clear(quadtree_t *quadtree)
 
 int quadtree_insert(quadtree_t *quadtree, plane_t *plane)
 {
-    if (!(sfIntRect_contains(&(quadtree->boundary),
-                            plane->path->pos.x, plane->path->pos.y)))
+    if (!(boundary_contains_pos(quadtree->boundary, plane->path->pos)))
         return (1);
     if (quadtree->nb_planes < QT_CAPACITY && !(quadtree->is_divided)) {
         quadtree->planes[quadtree->nb_planes] = plane;
