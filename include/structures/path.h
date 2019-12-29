@@ -9,6 +9,7 @@
     #define PATH_H_
 
     #include <SFML/Graphics.h>
+    #include "tower.h"
 
     typedef struct path {
         sfVector2f pos;
@@ -18,4 +19,5 @@
 
     path_t *path_create(sfVector2f beg, sfVector2f end, unsigned int speed);
     sfVector2f get_step_offset(sfVector2f point_a, sfVector2f point_b);
+    path_t *get_random_path(tower_t **towers);
 #endif

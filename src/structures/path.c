@@ -9,6 +9,7 @@
 #include <math.h>
 #include <SFML/Graphics.h>
 #include "path.h"
+#include "utils.h"
 
 path_t *path_create(sfVector2f beg, sfVector2f end, unsigned int speed)
 {
@@ -34,4 +35,17 @@ sfVector2f get_step_offset(sfVector2f point_a, sfVector2f point_b)
     offset.x = dx / (float)steps;
     offset.y = dy / (float)steps;
     return (offset);
+}
+
+path_t *get_random_path(tower_t **towers)
+{
+    sfVector2f beg;
+    sfVector2f end;
+    unsigned int speed = rand() % (6 + 1 - 3) + 3;
+
+    beg = get_random_tower_pos(towers);
+    end = get_random_tower_pos(towers);
+    while (pos_match(beg, end))
+        end = get_random_tower_pos(towers);
+    return (path_create(beg, end, speed));
 }
