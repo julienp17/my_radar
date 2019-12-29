@@ -22,8 +22,8 @@
     } quadtree_t;
 
     quadtree_t *quadtree_create(sfIntRect boundary);
-    void quadtree_destroy(quadtree_t *quadtree);
     void quadtree_clear(quadtree_t *quadtree);
     int quadtree_insert(quadtree_t *quadtree, plane_t *plane);
+    unsigned int quadtree_query(quadtree_t *quadtree, sfIntRect const area);
     int quadtree_subdivide(quadtree_t **quadtree);
 #endif
