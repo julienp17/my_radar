@@ -19,12 +19,14 @@ SRC_F 		=	usage.c \
 				draw.c \
 				events.c \
 				utils.c \
+				collisions.c \
 				booleans/boundary.c \
 				booleans/pos.c \
 				structures/plane.c \
 				structures/tower.c \
 				structures/window.c \
 				structures/quadtree.c \
+				structures/quadtree_query.c \
 				structures/sim.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
