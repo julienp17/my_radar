@@ -27,9 +27,8 @@ int get_entities_from_file(char const *file_path, sim_t *sim)
     nb_towers = my_count_char(file_buffer, TOWER_SYMBOL);
     sim->planes = malloc(sizeof(plane_t *) * (nb_planes + 1));
     sim->towers = malloc(sizeof(tower_t *) * (nb_towers + 1));
-    if (!(stream = fopen(file_path, "r")))
-        return (1);
-    if (!(sim->planes) || !(sim->towers))
+    stream = fopen(file_path, "r");
+    if (!(sim->planes) || !(sim->towers) || !(stream))
         return (1);
     if (fill_entities_by_line(stream, sim) != 0)
         return (1);

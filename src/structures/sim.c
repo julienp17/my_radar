@@ -31,7 +31,7 @@ sim_t *sim_create_from_script(char const *filepath)
         return (NULL);
     if (!(sim->plane_texture) || !(sim->tower_texture))
         return (NULL);
-    if (get_entities_from_file(filepath, sim) == 1)
+    if (get_entities_from_file(filepath, sim) != 0)
         return (NULL);
     return (sim);
 }
