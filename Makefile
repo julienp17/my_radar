@@ -20,6 +20,7 @@ SRC_F 		=	usage.c \
 				events.c \
 				geometry.c \
 				collisions.c \
+				start_menu.c \
 				booleans/boundary.c \
 				booleans/pos.c \
 				structures/plane.c \
@@ -28,6 +29,8 @@ SRC_F 		=	usage.c \
 				structures/quadtree.c \
 				structures/quadtree_query.c \
 				structures/sim.c \
+				structures/button.c \
+				structures/start_menu.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
