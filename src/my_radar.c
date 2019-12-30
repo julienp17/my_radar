@@ -22,7 +22,7 @@ int my_radar(char const *script_path)
     if (sim == NULL)
         return (MY_EXIT_FAILURE);
     while (sfRenderWindow_isOpen(sim->window->window)) {
-        poll_events(sim);
+        sim_poll_events(sim);
         if (!(sim->is_paused)) {
             sfRenderWindow_clear(sim->window->window, sfWhite);
             simulation_loop(sim);
@@ -43,7 +43,7 @@ void simulation_loop(sim_t *sim)
     draw_towers(sim->window->window, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, c_time);
-    draw_quadtree(sim->window->window, sim->quadtree);
+    // draw_quadtree(sim->window->window, sim->quadtree);
 }
 
 void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time)
