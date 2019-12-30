@@ -11,8 +11,8 @@
 
 Test(test_pos_match, no_match)
 {
-    sfVector2f pos_1 = {4.0, 4.0};
-    sfVector2f pos_2 = {3.8, 3.8};
+    sfVector2f pos_1 = {4.0, 2.0};
+    sfVector2f pos_2 = {3.6, 8.9};
     sfBool actual = sfFalse;
     sfBool expected = sfFalse;
 

@@ -10,7 +10,7 @@
 
 sfBool pos_match(sfVector2f pos_1, sfVector2f pos_2)
 {
-    return (pos_1.x == pos_2.x && pos_1.y == pos_2.x);
+    return (pos_1.x == pos_2.x && pos_1.y == pos_2.y);
 }
 
 sfBool pos_are_near(sfVector2f pos_1, sfVector2f pos_2, float const threshold)
