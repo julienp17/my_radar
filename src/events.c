@@ -9,20 +9,32 @@
 #include "events.h"
 #include "draw.h"
 #include "sim.h"
-#include <stdio.h>
 
-void poll_events(sim_t *sim)
+void sim_poll_events(sim_t *sim)
 {
     sfEvent event;
 
     while (sfRenderWindow_pollEvent(sim->window->window, &event)) {
-        poll_quit(&event, sim->window->window);
+        check_quit_window(&event, sim->window->window);
         if (event.key.code == sfKeySpace)
             pause_sim(sim);
     }
 }
 
-void poll_quit(sfEvent *event, sfRenderWindow *window)
+void start_menu_poll_events(sfRenderWindow *window, int *exit_code)
+{
+    sfEvent event;
+
+    while (sfRenderWindow_pollEvent(window, &event)) {
+        check_quit_window(&event, window);
+        if (event.key.code == sfKeyS) {
+            sfRenderWindow_close(window);
+            *exit_code = 1;
+        }
+    }
+}
+
+void check_quit_window(sfEvent *event, sfRenderWindow *window)
 {
     if (event->type == sfEvtClosed)
         sfRenderWindow_close(window);
