@@ -67,21 +67,6 @@ int quadtree_insert(quadtree_t *quadtree, plane_t *plane)
     return (1);
 }
 
-unsigned int quadtree_query(quadtree_t *quadtree, sfIntRect const area)
-{
-    unsigned int nb_planes = 0;
-
-    if (!(boundary_overlaps(quadtree->boundary, area)))
-        return (0);
-    if (quadtree->is_divided)
-        for (unsigned int i = 0 ; i < 4 ; i++)
-            nb_planes += quadtree_query(quadtree->children[i], area);
-    for (unsigned int i = 0 ; quadtree->planes[i] ; i++)
-        if (boundary_contains_pos(area, quadtree->planes[i]->path->pos))
-            nb_planes++;
-    return (nb_planes);
-}
-
 int quadtree_subdivide(quadtree_t **quadtree)
 {
     int x = (*quadtree)->boundary.left;
