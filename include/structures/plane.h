@@ -26,5 +26,5 @@
     plane_t *plane_create(path_t *path, sfTexture *texture, unsigned int delay);
     void plane_destroy(plane_t *plane);
     void plane_move(plane_t *plane, sfVector2f const offset);
-    void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock);
+    void plane_reset_random(plane_t *, tower_t **towers, unsigned int c_time);
 #endif

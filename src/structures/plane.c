@@ -67,12 +67,13 @@ void plane_move(plane_t *plane, sfVector2f const offset)
     plane->path->pos.x  += offset.x;
     plane->path->pos.y  += offset.y;
     plane->hitbox.left  += offset.x;
-    plane->hitbox.top += offset.y;
+    plane->hitbox.top   += offset.y;
     sfSprite_move(plane->sprite, offset);
-    sfRectangleShape_move(plane->outline, offset);
+    sfRectangleShape_setPosition(plane->outline, (sfVector2f)
+                                {plane->hitbox.left, plane->hitbox.top});
 }
 
-void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock)
+void plane_reset_random(plane_t *plane, tower_t **towers, unsigned int c_time)
 {
     path_t *new_path = NULL;
     unsigned int new_delay = 0;
@@ -80,6 +81,6 @@ void plane_reset_random(plane_t *plane, tower_t **towers, sfClock *clock)
     if (plane->path)
         free(plane->path);
     new_path = get_random_path(towers);
-    new_delay = sfTime_asSeconds(sfClock_getElapsedTime(clock)) + rand() % 10;
+    new_delay = c_time + rand() % 20;
     plane = plane_init(plane, new_path, new_delay);
 }
