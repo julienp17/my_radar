@@ -35,7 +35,7 @@ sfVector2f get_rotated_point(sfVector2f point, sfVector2f center, float angle)
     return (rotated_point);
 }
 
-sfVector2f *get_corners(sfFloatRect rect)
+sfVector2f *get_corners(sfFloatRect const rect)
 {
     sfVector2f *corners = malloc(sizeof(sfVector2f) * 4);
 
