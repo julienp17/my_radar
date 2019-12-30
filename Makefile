@@ -18,7 +18,7 @@ SRC_F 		=	usage.c \
 				my_radar.c \
 				draw.c \
 				events.c \
-				utils.c \
+				geometry.c \
 				collisions.c \
 				booleans/boundary.c \
 				booleans/pos.c \
