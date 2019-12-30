@@ -23,9 +23,9 @@ float get_angle_from_coordinate(sfVector2f point_a, sfVector2f point_b)
     return (180.0 / M_PI * radians);
 }
 
-sfVector2i get_rotated_point(sfVector2i point, sfVector2i center, float angle)
+sfVector2f get_rotated_point(sfVector2f point, sfVector2f center, float angle)
 {
-    sfVector2i rotated_point;
+    sfVector2f rotated_point;
 
     angle = angle * (M_PI / 180);
     rotated_point.x = cos(angle) * (point.x - center.x)
@@ -35,40 +35,51 @@ sfVector2i get_rotated_point(sfVector2i point, sfVector2i center, float angle)
     return (rotated_point);
 }
 
-sfVector2i *get_rotated_points(sfIntRect hitbox, float angle)
+sfVector2f *get_corners(sfFloatRect rect)
 {
-    sfVector2i center = {hitbox.left + hitbox.width / 2,
-                        hitbox.top + hitbox.height / 2};
-    sfVector2i *corners = malloc(sizeof(sfVector2i) * 4);
+    sfVector2f *corners = malloc(sizeof(sfVector2f) * 4);
 
-    corners[0] = (sfVector2i) {hitbox.left, hitbox.top};
-    corners[1] = (sfVector2i) {hitbox.left + hitbox.width, hitbox.top};
-    corners[2] = (sfVector2i) {hitbox.left, hitbox.top + hitbox.height};
-    corners[3] = (sfVector2i) {hitbox.left + hitbox.width,
-                                hitbox.top + hitbox.height};
+    if (!corners)
+        return (NULL);
+    corners[0] = (sfVector2f) {rect.left, rect.top};
+    corners[1] = (sfVector2f) {rect.left + rect.width, rect.top};
+    corners[2] = (sfVector2f) {rect.left, rect.top + rect.height};
+    corners[3] = (sfVector2f) {rect.left + rect.width,
+                                rect.top + rect.height};
+    return (corners);
+}
+
+sfVector2f *get_rotated_corners(sfFloatRect hitbox, float angle)
+{
+    sfVector2f center = {hitbox.left + hitbox.width / 2.0,
+                        hitbox.top + hitbox.height / 2.0};
+    sfVector2f *corners = get_corners(hitbox);
+
+    if (!corners)
+        return (NULL);
     for (unsigned int i = 0 ; i < 4 ; i++)
         corners[i] = get_rotated_point(corners[i], center, angle);
     return (corners);
 }
 
-sfIntRect get_bounding_box_of_rotated(sfIntRect const hitbox, float angle)
+sfFloatRect get_bounding_box_of_rotated(sfFloatRect const hitbox, float angle)
 {
-    sfVector2i *corners = get_rotated_points(hitbox, angle);
-    int min_x = corners[0].x;
-    int max_x = corners[0].x;
-    int min_y = corners[0].y;
-    int max_y = corners[0].y;
+    sfVector2f *rotated_corners = get_rotated_corners(hitbox, angle);
+    float min_x = rotated_corners[0].x;
+    float max_x = rotated_corners[0].x;
+    float min_y = rotated_corners[0].y;
+    float max_y = rotated_corners[0].y;
 
     for (unsigned int i = 1 ; i < 4 ; i++) {
-        if (corners[i].x < min_x)
-            min_x = corners[i].x;
-        if (corners[i].x > max_x)
-            max_x = corners[i].x;
-        if (corners[i].y < min_y)
-            min_y = corners[i].y;
-        if (corners[i].y > max_y)
-            max_y = corners[i].y;
+        if (rotated_corners[i].x < min_x)
+            min_x = rotated_corners[i].x;
+        if (rotated_corners[i].x > max_x)
+            max_x = rotated_corners[i].x;
+        if (rotated_corners[i].y < min_y)
+            min_y = rotated_corners[i].y;
+        if (rotated_corners[i].y > max_y)
+            max_y = rotated_corners[i].y;
     }
-    free(corners);
-    return ((sfIntRect) {min_x, min_y, max_x - min_x, max_y - min_y});
+    free(rotated_corners);
+    return ((sfFloatRect) {min_x, min_y, max_x - min_x, max_y - min_y});
 }

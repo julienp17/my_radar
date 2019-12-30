@@ -27,11 +27,11 @@ sfBool boundary_overlaps(sfIntRect const boundary, sfIntRect const other)
     );
 }
 
-sfBool boundary_is_in_circle(sfIntRect const rect, sfVector2f circle_center,
+sfBool boundary_is_in_circle(sfFloatRect const frect, sfVector2f circle_center,
                         unsigned int circle_radius)
 {
-    sfVector2f rect_center = {rect.left + rect.width / 2,
-                                rect.top +rect.height / 2};
+    sfVector2f rect_center = {frect.left + frect.width / 2,
+                            frect.top + frect.height / 2};
     int x = rect_center.x - circle_center.x;
     int y = rect_center.y - circle_center.y;
 

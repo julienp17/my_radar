@@ -18,7 +18,7 @@
         path_t *path;
         unsigned int delay;
         float angle;
-        sfIntRect hitbox;
+        sfFloatRect hitbox;
         sfSprite *sprite;
         sfRectangleShape *outline;
     } plane_t;

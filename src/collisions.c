@@ -22,7 +22,7 @@ sfBool plane_collided(plane_t *plane, tower_t **towers, quadtree_t *quadtree,
     return (plane_check_collisions(plane, towers, quadtree, c_time));
 }
 
-sfBool plane_is_in_control_area(sfIntRect hitbox, tower_t **towers)
+sfBool plane_is_in_control_area(sfFloatRect hitbox, tower_t **towers)
 {
     for (unsigned int i = 0 ; towers[i] ; i++)
         if (boundary_is_in_circle(hitbox, towers[i]->pos, towers[i]->radius))

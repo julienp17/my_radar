@@ -40,8 +40,8 @@ static plane_t *plane_init(plane_t *plane, path_t *path, unsigned int delay)
     sfSprite_setRotation(plane->sprite, 0.0);
     sfSprite_move(plane->sprite, (sfVector2f) {10, 10});
     sfSprite_rotate(plane->sprite, plane->angle);
-    plane->hitbox = (sfIntRect) {(int)plane->path->pos.x,
-                                (int)plane->path->pos.y, 20,20};
+    plane->hitbox = (sfFloatRect) {plane->path->pos.x,
+                                    plane->path->pos.y, 20.0, 20.0};
     plane->hitbox = get_bounding_box_of_rotated(plane->hitbox, plane->angle);
     sfRectangleShape_setPosition(plane->outline, (sfVector2f)
                                 {plane->hitbox.left, plane->hitbox.top});
