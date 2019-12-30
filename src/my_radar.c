@@ -13,6 +13,7 @@
 #include "draw.h"
 #include "events.h"
 #include "utils.h"
+#include "collisions.h"
 
 int my_radar(char const *script_path)
 {
@@ -34,22 +35,35 @@ int my_radar(char const *script_path)
 
 void simulation_loop(sim_t *sim)
 {
-    sfRenderWindow_drawSprite(sim->window->window,sim->window->bg_sprite, NULL);
+    unsigned int c_time = sfTime_asSeconds(sfClock_getElapsedTime(sim->clock));
+
     quadtree_clear(sim->quadtree);
+    insert_planes_in_quadtree(sim->planes, sim->quadtree, c_time);
+    sfRenderWindow_drawSprite(sim->window->window,sim->window->bg_sprite, NULL);
     draw_towers(sim->window->window, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
-        plane_loop(sim->planes[i], sim);
+        plane_loop(sim->planes[i], sim, c_time);
+    draw_quadtree(sim->window->window, sim->quadtree);
 }
 
-void plane_loop(plane_t *plane, sim_t *sim)
+void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time)
 {
-    if (plane->delay > (sfTime_asSeconds(sfClock_getElapsedTime(sim->clock))))
+    if (plane->delay > c_time)
         return;
-    quadtree_insert(sim->quadtree, plane);
+    if (plane_collided(plane, sim->towers, sim->quadtree, c_time))
+        return;
     sfRenderWindow_drawSprite(sim->window->window, plane->sprite, NULL);
     sfRenderWindow_drawRectangleShape(sim->window->window,plane->outline, NULL);
     if (!(pos_are_near(plane->path->pos, plane->path->end, 10.0)))
         plane_move(plane, plane->path->step);
     else
-        plane_reset_random(plane, sim->towers, sim->clock);
+        plane_reset_random(plane, sim->towers, c_time);
+}
+
+void insert_planes_in_quadtree(plane_t **planes, quadtree_t *quadtree,
+                            unsigned int c_time)
+{
+    for (unsigned int i = 0 ; planes[i] ; i++)
+        if (planes[i]->delay <= c_time)
+            quadtree_insert(quadtree, planes[i]);
 }
