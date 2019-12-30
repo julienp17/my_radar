@@ -21,4 +21,6 @@
     sfBool pos_are_near(sfVector2f, sfVector2f, float const threshold);
     sfBool boundary_contains_pos(sfIntRect const boundary,sfVector2f const pos);
     sfBool boundary_overlaps(sfIntRect const boundary, sfIntRect const other);
+    sfBool boundary_is_in_circle(sfIntRect const rect, sfVector2f circle_center,
+                        unsigned int circle_radius);
 #endif

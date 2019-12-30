@@ -5,6 +5,7 @@
 ** Boolean functions for boundaries, represented by sfIntRect
 */
 
+#include <math.h>
 #include <SFML/Graphics.h>
 
 sfBool boundary_contains_pos(sfIntRect const boundary, sfVector2f const pos)
@@ -24,4 +25,15 @@ sfBool boundary_overlaps(sfIntRect const boundary, sfIntRect const other)
         other.top  > boundary.top + boundary.height ||
         other.top + other.height < boundary.top
     );
+}
+
+sfBool boundary_is_in_circle(sfIntRect const rect, sfVector2f circle_center,
+                        unsigned int circle_radius)
+{
+    sfVector2f rect_center = {rect.left + rect.width / 2,
+                                rect.top +rect.height / 2};
+    int x = rect_center.x - circle_center.x;
+    int y = rect_center.y - circle_center.y;
+
+    return (pow(x, 2) + pow(y, 2) <= pow(circle_radius, 2));
 }
