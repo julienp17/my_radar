@@ -14,7 +14,8 @@
     #include "plane.h"
     #include "tower.h"
 
-    #define SIM_BG_IMG_PATH        "assets/backgrounds/1440p/world_map_1440.png"
+    #define SIM_BG_DAY_IMG_PATH   "assets/backgrounds/1440p/world_map_day.png"
+    #define SIM_BG_NIGHT_IMG_PATH "assets/backgrounds/1440p/world_map_night.png"
     #define SIM_PLANE_TEXTURE_PATH "assets/textures/plane2_small.png"
     #define SIM_TOWER_TEXTURE_PATH "assets/textures/tower_small.png"
 
@@ -23,6 +24,7 @@
         quadtree_t *quadtree;
         plane_t **planes;
         tower_t **towers;
+        sfTexture *night_texture;
         sfTexture *plane_texture;
         sfTexture *tower_texture;
         sfClock *clock;

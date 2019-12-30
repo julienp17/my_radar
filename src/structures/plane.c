@@ -71,6 +71,17 @@ void plane_move(plane_t *plane, sfVector2f const offset)
     sfSprite_move(plane->sprite, offset);
     sfRectangleShape_setPosition(plane->outline, (sfVector2f)
                                 {plane->hitbox.left, plane->hitbox.top});
+    if (plane->path->pos.x < 0) {
+        plane->path->pos.x += 2560.0;
+        plane->hitbox.left += 2560.0 - 10.0;
+        sfSprite_setPosition(plane->sprite, plane->path->pos);
+        sfRectangleShape_setPosition(plane->outline, plane->path->pos);
+    } else if (plane->path->pos.x > 2560.0) {
+        plane->path->pos.x -= 2560.0;
+        plane->hitbox.left -= 2560.0 + 10.0;
+        sfSprite_setPosition(plane->sprite, plane->path->pos);
+        sfRectangleShape_setPosition(plane->outline, plane->path->pos);
+    }
 }
 
 void plane_reset_random(plane_t *plane, tower_t **towers, unsigned int c_time)
