@@ -33,8 +33,8 @@ sfBool plane_is_in_control_area(sfFloatRect hitbox, tower_t **towers)
 sfBool plane_check_collisions(plane_t *plane, tower_t **towers,
                             quadtree_t *quadtree, unsigned int c_time)
 {
-    sfIntRect area = (sfIntRect) {plane->path->pos.x - 20,
-                                plane->path->pos.y - 20, 60, 60};
+    sfIntRect area = (sfIntRect) {plane->path->pos.x - 30.0,
+                                plane->path->pos.y - 30.0, 50, 50};
     plane_t **planes = quadtree_query(quadtree, area);
 
     if (!planes)
