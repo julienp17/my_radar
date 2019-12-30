@@ -1,0 +1,120 @@
+A 1180 390 1430 390 5 0 // spain -> turkey
+A 1180 390 1430 500 6 0 // spain -> egypt
+A 450 580 1430 500 5 1 // mexico -> egypt
+A 1430 390 450 580 6 2 // turkey -> mexico
+A 630 415 1560 1000 4 1 // USA -> madagascar
+A 2265 1160 840 1060 6 1 // australia -> argentina
+A 630 415 680 1150 4 4 // USA -> chile
+A 630 415 1590 540 6 1 // USA -> dubai
+A 1550 750 2070 550 5 4 // somalia -> china
+A 1380 220 1560 1000 6 3 // estonia -> madagascar
+A 660 730 1180 390 6 1 // colombia -> spain
+A 2015 855 1560 1000 6 0 // indonesia -> madagascar
+A 1095 650 680 1150 5 5 // senegal -> chile
+A 680 1150 1550 750 3 1 // chile -> somalia
+A 930 850 1550 750 3 2 // brazil -> somalia
+A 1180 390 1560 1000 6 0 // spain -> madagascar
+A 1430 500 840 1060 5 4 // egypt -> argentina
+A 1380 220 1790 680 3 1 // estonia -> india
+A 680 1150 930 850 5 3 // chile -> brazil
+A 840 1060 1430 390 5 3 // argentina -> turkey
+A 660 730 1430 500 5 0 // colombia -> egypt
+A 2015 855 630 415 5 5 // indonesia -> USA
+A 2265 1160 1550 750 5 1 // australia -> somalia
+A 1370 1120 680 1150 4 3 // africa -> chile
+A 1180 390 660 730 4 0 // spain -> colombia
+A 1180 390 2265 1160 4 0 // spain -> australia
+A 680 1150 1550 750 5 4 // chile -> somalia
+A 1550 750 1380 220 4 1 // somalia -> estonia
+A 1560 1000 660 730 3 4 // madagascar -> colombia
+A 930 850 450 580 6 5 // brazil -> mexico
+A 930 850 680 1150 5 0 // brazil -> chile
+A 930 850 450 580 6 5 // brazil -> mexico
+A 450 580 2070 550 4 4 // mexico -> china
+A 2015 855 1260 730 5 4 // indonesia -> nigeria
+A 1560 1000 1590 540 4 1 // madagascar -> dubai
+A 2015 855 1430 390 6 1 // indonesia -> turkey
+A 930 850 2015 855 6 1 // brazil -> indonesia
+A 450 580 680 1150 5 2 // mexico -> chile
+A 1430 390 1180 390 4 3 // turkey -> spain
+A 660 730 1380 220 4 4 // colombia -> estonia
+A 1180 390 1380 220 3 2 // spain -> estonia
+A 630 415 1095 650 5 2 // USA -> senegal
+A 840 1060 2015 855 3 0 // argentina -> indonesia
+A 2265 1160 660 730 5 4 // australia -> colombia
+A 1180 390 1260 730 5 2 // spain -> nigeria
+A 1260 730 840 1060 4 3 // nigeria -> argentina
+A 1380 220 1370 1120 5 4 // estonia -> africa
+A 1095 650 680 1150 5 2 // senegal -> chile
+A 2015 855 1430 500 6 4 // indonesia -> egypt
+A 2015 855 630 415 3 4 // indonesia -> USA
+A 840 1060 1180 390 3 5 // argentina -> spain
+A 2015 855 1550 750 5 0 // indonesia -> somalia
+A 1790 680 1430 500 6 2 // india -> egypt
+A 1095 650 840 1060 4 0 // senegal -> argentina
+A 1095 650 630 415 5 2 // senegal -> USA
+A 660 730 1550 750 6 0 // colombia -> somalia
+A 680 1150 1380 220 5 3 // chile -> estonia
+A 1550 750 660 730 3 4 // somalia -> colombia
+A 1095 650 630 415 5 2 // senegal -> USA
+A 1430 500 2265 1160 6 4 // egypt -> australia
+A 2265 1160 2070 550 4 2 // australia -> china
+A 930 850 1430 500 4 5 // brazil -> egypt
+A 1380 220 1590 540 5 5 // estonia -> dubai
+A 1095 650 1380 220 5 1 // senegal -> estonia
+A 660 730 2070 550 5 1 // colombia -> china
+A 1430 500 1095 650 5 1 // egypt -> senegal
+A 1095 650 1380 220 4 3 // senegal -> estonia
+A 1590 540 660 730 5 1 // dubai -> colombia
+A 2070 550 1180 390 5 3 // china -> spain
+A 2265 1160 840 1060 4 2 // australia -> argentina
+A 630 415 1380 220 4 5 // USA -> estonia
+A 1095 650 1430 390 3 2 // senegal -> turkey
+A 2015 855 930 850 5 5 // indonesia -> brazil
+A 840 1060 1095 650 6 1 // argentina -> senegal
+A 630 415 1380 220 4 2 // USA -> estonia
+A 2265 1160 1550 750 4 5 // australia -> somalia
+A 1430 390 1790 680 3 0 // turkey -> india
+A 1560 1000 450 580 5 1 // madagascar -> mexico
+A 1430 500 1790 680 3 1 // egypt -> india
+A 1260 730 2015 855 3 4 // nigeria -> indonesia
+A 1560 1000 2015 855 5 5 // madagascar -> indonesia
+A 1550 750 1370 1120 6 4 // somalia -> africa
+A 1590 540 680 1150 3 0 // dubai -> chile
+A 1095 650 1550 750 5 0 // senegal -> somalia
+A 1260 730 930 850 6 5 // nigeria -> brazil
+A 2015 855 1370 1120 6 1 // indonesia -> africa
+A 1430 390 840 1060 4 1 // turkey -> argentina
+A 1260 730 1790 680 5 5 // nigeria -> india
+A 660 730 1260 730 3 2 // colombia -> nigeria
+A 1560 1000 2015 855 3 1 // madagascar -> indonesia
+A 1590 540 840 1060 4 0 // dubai -> argentina
+A 1590 540 1790 680 6 1 // dubai -> india
+A 1180 390 1430 390 4 5 // spain -> turkey
+A 1560 1000 840 1060 3 2 // madagascar -> argentina
+A 450 580 1370 1120 3 3 // mexico -> africa
+A 660 730 2265 1160 3 4 // colombia -> australia
+A 630 415 1260 730 5 4 // USA -> nigeria
+A 630 415 1430 500 4 4 // USA -> egypt
+A 930 850 1380 220 3 3 // brazil -> estonia
+A 1260 730 930 850 5 1 // nigeria -> brazil
+T 450 580 90 // mexico
+T 630 415 130 // USA
+T 660 730 70 // colombia
+T 680 1150 60 // chile
+T 840 1060 75 // argentina
+T 930 850 85 // brazil
+T 1095 650 75 // senegal
+T 1180 390 110 // spain
+T 1260 730 75 // nigeria
+T 1370 1120 85 // africa
+T 1380 220 50 // estonia
+T 1430 390 75 // turkey
+T 1430 500 80 // egypt
+T 1550 750 65 // somalia
+T 1560 1000 50 // madagascar
+T 1590 540 90 // dubai
+T 1790 680 100 // india
+T 2015 855 90 // indonesia
+T 2070 550 120 // china
+T 2265 1160 80 // australia

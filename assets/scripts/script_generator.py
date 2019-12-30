@@ -25,7 +25,7 @@ class Plane:
         self.departure_country = departure_tower.country
         self.arrival_country = arrival_tower.country
         self.speed = randint(3, 6)
-        self.delay = randint(0, 5)
+        self.delay = randint(0, 20)
 
     def __str__(self):
         return "A {} {} {} {} {} {} // {} -> {}".format(
@@ -54,7 +54,7 @@ for line in file:
     towers.append(new_tower)
 file.close()
 i = 0
-nb_planes = int(len(towers) * 2.5)
+nb_planes = int(argv[2])
 for i in range(nb_planes):
     tower_indexes = sample(range(0, len(towers)), 2)
     plane = Plane(towers[tower_indexes[0]], towers[tower_indexes[1]])
@@ -64,5 +64,6 @@ for plane in planes:
     script += (str(plane) + "\n")
 for tower in towers:
     script += (str(tower) + "\n")
-with open(argv[2], "w") as file:
+filename = str(nb_planes) + "_planes_" + str(len(towers)) + "_towers.script"
+with open(filename, "w") as file:
     file.write(script)
