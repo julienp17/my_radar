@@ -14,6 +14,7 @@
 
     typedef struct tower {
         sfVector2f pos;
+        unsigned int radius;
         sfSprite *sprite;
         sfCircleShape *control_area;
     } tower_t;

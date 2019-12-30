@@ -17,6 +17,7 @@ tower_t *tower_create(sfVector2f pos, sfTexture *texture, unsigned int radius)
     if (!tower)
         return (NULL);
     tower->pos          = pos;
+    tower->radius       = radius;
     tower->sprite       = sfSprite_create();
     tower->control_area = sfCircleShape_create();
     if (!(tower->sprite) || !(tower->control_area))
