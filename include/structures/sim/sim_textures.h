@@ -10,10 +10,10 @@
 
     #include <SFML/Graphics.h>
 
-    #define START_MENU_BG_TEXTURE_PATH "assets/backgrounds/1440p/menu.png"
-    #define SIM_BG_TEXTURE_PATH        "assets/backgrounds/1440p/world_map.png"
-    #define PLANE_TEXTURE_PATH         "assets/textures/plane2_small.png"
-    #define TOWER_TEXTURE_PATH         "assets/textures/tower_small.png"
+    #define START_MENU_BG_TEXTURE_PATH "assets/backgrounds/start_menu.png"
+    #define SIM_BG_TEXTURE_PATH        "assets/backgrounds/world_map.png"
+    #define PLANE_TEXTURE_PATH         "assets/textures/plane.png"
+    #define TOWER_TEXTURE_PATH         "assets/textures/tower.png"
 
     typedef struct sim_textures {
         sfTexture *start_menu_bg;
