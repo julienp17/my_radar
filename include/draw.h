@@ -15,5 +15,5 @@
     void draw_towers(sfRenderWindow *window, tower_t **towers);
     void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree);
     void draw_pause_menu(window_t *window);
-    void draw_timer(window_t *window, sfClock *clock);
+    void draw_timer(window_t *window, unsigned int c_time);
 #endif

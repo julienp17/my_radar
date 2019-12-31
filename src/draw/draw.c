@@ -32,20 +32,3 @@ void draw_pause_menu(window_t *window)
     sfRenderWindow_display(window->render);
     sfRectangleShape_destroy(pause_menu);
 }
-
-void draw_timer(window_t *window, sfClock *clock)
-{
-    sfInt32 time = sfTime_asSeconds(sfClock_getElapsedTime(clock));
-    sfText *str_time = sfText_create();
-    sfVector2f pos = {window->width - 100, 0};
-    sfFont *font = sfFont_createFromFile("assets/fonts/skyfont.otf");
-
-    sfText_setCharacterSize(str_time, 100);
-    sfText_setFont(str_time, font);
-    sfText_setColor(str_time, sfBlack);
-    sfText_setString(str_time, my_int_to_strnum(time));
-    sfText_setPosition(str_time, pos);
-    sfRenderWindow_drawText(window->render, str_time, NULL);
-    sfText_destroy(str_time);
-    sfFont_destroy(font);
-}
