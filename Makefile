@@ -18,6 +18,7 @@ SRC_F 		=	usage.c \
 				simulation.c \
 				draw/draw.c \
 				draw/draw_quadtree.c \
+				draw/draw_timer.c \
 				events/poll_events.c \
 				events/pause_sim.c \
 				utilities/geometry.c \
@@ -46,7 +47,7 @@ SRC_UT_F 	=	test_boundary_overlaps.c \
 				test_pos_are_near.c \
 				test_boundary_contains_pos.c \
 
-INC			= 	-I./include/ -I./include/structures
+INC			= 	-I./include/ -I./include/structures/ -I./include/structures/sim/
 
 CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
 
