@@ -14,6 +14,7 @@ SRC			=	my_count_char.c    \
 				my_puterr.c        \
 				my_putstr.c        \
 				my_revstr.c        \
+				my_strcat.c        \
 				my_strcmp.c        \
 				my_strlen.c        \
 				my_strtol.c        \

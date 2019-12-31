@@ -20,4 +20,5 @@
 
     char *my_int_to_strnum(int nb);
     char *my_revstr(char *str);
+    char *my_strcat(char *dest, char const *src);
 #endif
