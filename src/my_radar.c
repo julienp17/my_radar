@@ -43,21 +43,25 @@ void simulation_loop(sim_t *sim)
     draw_towers(sim->window->window, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, c_time);
-    draw_quadtree(sim->window->window, sim->quadtree);
 }
 
 void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time)
 {
+    plane_t *coll_plane = NULL;
+
     if (plane->delay > c_time)
         return;
-    if (plane_collided(plane, sim->towers, sim->quadtree, c_time))
+    coll_plane = get_collided_plane(plane, sim->towers, sim->quadtree);
+    if (coll_plane) {
+        plane_reset_random(plane, sim->towers, c_time, sim->window->width);
+        plane_reset_random(coll_plane, sim->towers, c_time, sim->window->width);
         return;
+    }
     sfRenderWindow_drawSprite(sim->window->window, plane->sprite, NULL);
     sfRenderWindow_drawRectangleShape(sim->window->window,plane->outline, NULL);
-    if (!(pos_are_near(plane->path->pos, plane->path->end, 10.0)))
-        plane_move(plane, plane->path->step);
-    else
-        plane_reset_random(plane, sim->towers, c_time);
+    plane_move(plane, plane->path->step, sim->window->width);
+    if (pos_are_near(plane->path->pos, plane->path->end, 10.0))
+        plane_reset_random(plane, sim->towers, c_time, sim->window->width);
 }
 
 void insert_planes_in_quadtree(plane_t **planes, quadtree_t *quadtree,
