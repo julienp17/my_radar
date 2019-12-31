@@ -10,6 +10,8 @@
 
     #include <SFML/Graphics.h>
 
+    typedef unsigned int uint;
+
     float get_angle_from_coordinate(sfVector2f point_a, sfVector2f point_b);
 
     sfVector2f get_rotated_point(sfVector2f point, sfVector2f center,
