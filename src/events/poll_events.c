@@ -22,6 +22,17 @@ void sim_poll_events(sim_t *sim)
     }
 }
 
+void start_menu_poll_events(sfRenderWindow *render, int *exit_code)
+{
+    sfEvent event;
+
+    while (sfRenderWindow_pollEvent(render, &event)) {
+        check_window_quit(&event, render);
+        if (event.key.code == sfKeyS)
+            *exit_code = 1;
+    }
+}
+
 void check_window_quit(sfEvent *event, sfRenderWindow *window)
 {
     if (event->type == sfEvtClosed)
