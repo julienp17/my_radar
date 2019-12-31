@@ -22,7 +22,7 @@ int my_radar(char const *script_path)
     if (sim == NULL)
         return (MY_EXIT_FAILURE);
     while (sfRenderWindow_isOpen(sim->window->window)) {
-        poll_events(sim);
+        sim_poll_events(sim);
         if (!(sim->is_paused)) {
             sfRenderWindow_clear(sim->window->window, sfWhite);
             simulation_loop(sim);
