@@ -12,6 +12,8 @@
     #include "sim.h"
 
     int my_radar(char const *file_script);
+    int start_menu(sfRenderWindow *render, sfSprite *background);
+
     void launch_simulation(sim_t *sim);
     void simulation_loop(sim_t *sim);
     void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time);

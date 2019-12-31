@@ -9,6 +9,7 @@
 #include <time.h>
 #include "my_radar.h"
 #include "usage.h"
+#include "events.h"
 #include "sim.h"
 #include "my.h"
 
@@ -34,7 +35,22 @@ int my_radar(char const *script_path)
         my_puterr("Simulation couldn't be created.\n");
         return (MY_EXIT_FAILURE);
     }
-    launch_simulation(sim);
+    window_set_background(sim->window, sim->textures->start_menu_bg);
+    if (start_menu(sim->window->render, sim->window->background) == 1) {
+        window_set_background(sim->window, sim->textures->sim_bg);
+        launch_simulation(sim);
+    }
     sim_destroy(sim);
     return (MY_EXIT_SUCCESS);
+}
+
+int start_menu(sfRenderWindow *render, sfSprite *background)
+{
+    int exit_code = 0;
+
+    sfRenderWindow_drawSprite(render, background, NULL);
+    sfRenderWindow_display(render);
+    while (sfRenderWindow_isOpen(render) && exit_code == 0)
+        start_menu_poll_events(render, &exit_code);
+    return (exit_code);
 }
