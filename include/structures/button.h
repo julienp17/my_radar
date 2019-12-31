@@ -10,7 +10,7 @@
 
     #include <SFML/Graphics.h>
 
-    #define BUTTON_DEFAULT_FONT_PATH    "assets/fonts/libertine.ttf"
+    #define BUTTON_DEFAULT_FONT_PATH    "assets/fonts/falling_sky.otf"
 
     typedef struct button {
         sfRectangleShape *rect;
