@@ -22,6 +22,7 @@
 
     int get_entities_from_file(char const *file_path, sim_t *sim);
     int fill_entities_by_line(FILE *stream, sim_t *sim);
-    plane_t *add_plane_from_line(char *current_line, sfTexture *);
+    plane_t *add_plane_from_line(char *current_line, sfTexture *plane_texture,
+                                unsigned int w_width);
     tower_t *add_tower_from_line(char *current_line, sfTexture *);
 #endif

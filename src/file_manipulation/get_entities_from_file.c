@@ -46,7 +46,7 @@ int fill_entities_by_line(FILE *stream, sim_t *sim)
     while (getline(&current_line, &size, stream) != -1) {
         if (current_line[0] == PLANE_SYMBOL) {
             sim->planes[plane_index++] = add_plane_from_line(current_line,
-                                                            sim->plane_texture);
+                                        sim->plane_texture, sim->window->width);
         } else if (current_line[0] == TOWER_SYMBOL) {
             sim->towers[tower_index++] = add_tower_from_line(current_line,
                                                             sim->tower_texture);
@@ -60,7 +60,8 @@ int fill_entities_by_line(FILE *stream, sim_t *sim)
     return (0);
 }
 
-plane_t *add_plane_from_line(char *current_line, sfTexture *plane_texture)
+plane_t *add_plane_from_line(char *current_line, sfTexture *plane_texture,
+                            unsigned int w_width)
 {
     path_t *path = NULL;
     sfVector2f departure;
@@ -75,9 +76,9 @@ plane_t *add_plane_from_line(char *current_line, sfTexture *plane_texture)
     arrival.y   = my_strtol(current_line, &current_line);
     speed       = my_strtol(current_line, &current_line);
     delay       = my_strtol(current_line, &current_line);
-    if ((path = path_create(departure, arrival, speed)) == NULL)
+    if ((path = path_create(departure, arrival, speed, w_width)) == NULL)
         return (NULL);
-    return (plane_create(path, plane_texture, delay));
+    return (plane_create(path, plane_texture, delay, w_width));
 }
 
 tower_t *add_tower_from_line(char *current_line, sfTexture *tower_texture)
