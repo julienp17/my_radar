@@ -15,13 +15,16 @@ SRC			= 	$(addprefix $(SRC_D), $(SRC_F))
 OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
 SRC_F 		=	usage.c \
-				my_radar.c \
-				draw.c \
-				events.c \
-				geometry.c \
-				collisions.c \
-				booleans/boundary.c \
-				booleans/pos.c \
+				simulation.c \
+				draw/draw.c \
+				draw/draw_quadtree.c \
+				events/poll_events.c \
+				events/pause_sim.c \
+				utilities/geometry.c \
+				utilities/positions_checking.c \
+				utilities/get_box_corners.c \
+				collisions/box_collisions.c \
+				collisions/plane_collisions.c \
 				structures/plane/plane_create.c \
 				structures/plane/plane_init.c \
 				structures/plane/plane_move.c \
