@@ -30,9 +30,10 @@ SRC_F 		=	usage.c \
 				structures/plane/plane_move.c \
 				structures/tower.c \
 				structures/window.c \
-				structures/quadtree.c \
-				structures/quadtree_query.c \
-				structures/sim.c \
+				structures/quadtree/quadtree.c \
+				structures/quadtree/quadtree_query.c \
+				structures/sim/sim.c \
+				structures/sim/sim_textures.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
