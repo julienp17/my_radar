@@ -49,7 +49,7 @@ SRC_UT_F 	=	test_boundary_overlaps.c \
 
 INC			= 	-I./include/ -I./include/structures/ -I./include/structures/sim/
 
-CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
+CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS)
 
 DBFLAGS		=	-g -g3 -ggdb
 
@@ -64,7 +64,7 @@ NAME_UT 	= 	unit_tests
 all: $(NAME)
 
 $(NAME):	makelib $(OBJ) $(OBJ_M)
-	$(CC) -o $(NAME) $(OBJ) $(OBJ_M) $(CFLAGS) $(DBFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(OBJ_M) $(CFLAGS)
 
 makelib:
 	make -C ./lib/my/ all
