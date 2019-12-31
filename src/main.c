@@ -9,6 +9,8 @@
 #include <time.h>
 #include "my_radar.h"
 #include "usage.h"
+#include "sim.h"
+#include "my.h"
 
 int main(int ac, char **av)
 {
@@ -22,4 +24,17 @@ int main(int ac, char **av)
     srand(time(NULL));
     error_code = my_radar(av[1]);
     return (error_code);
+}
+
+int my_radar(char const *script_path)
+{
+    sim_t *sim = sim_create_from_script(script_path);
+
+    if (!sim) {
+        my_puterr("Simulation couldn't be created.\n");
+        return (MY_EXIT_FAILURE);
+    }
+    launch_simulation(sim);
+    sim_destroy(sim);
+    return (MY_EXIT_SUCCESS);
 }
