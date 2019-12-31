@@ -3,6 +3,5 @@
 [![pipeline status](https://gitlab.com/julienp17/my_radar/badges/master/pipeline.svg)](https://gitlab.com/julienp17/my_radar/commits/master)
 [![coverage report](https://gitlab.com/julienp17/my_radar/badges/master/coverage.svg)](https://gitlab.com/julienp17/my_radar/commits/master)
 
-To change the resolution, change the values in include/structures/window.h and
-don't forget to change the backgrounds paths aswell.
-There is default scripts to test the program in the assets directory.
+There are scripts to test the program under the assets/scripts directory.
+You can make your own with ./script_generator.py
