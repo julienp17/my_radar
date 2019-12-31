@@ -61,7 +61,7 @@ void plane_reset_random(plane_t *plane, tower_t **towers,
 
     if (plane->path)
         free(plane->path);
-    new_path = get_random_path(towers);
+    new_path = get_random_path(towers, w_width);
     new_delay = c_time + rand() % 20;
     plane = plane_init(plane, new_path, new_delay, w_width);
 }

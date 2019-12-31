@@ -12,14 +12,15 @@
 #include "utils.h"
 #include "math.h"
 
-path_t *path_create(sfVector2f beg, sfVector2f end, unsigned int speed)
+path_t *path_create(sfVector2f beg, sfVector2f end, uint speed, uint w_width)
 {
     path_t *path = malloc(sizeof(*path));
     sfVector2f alt_pos = beg;
 
     if (!path)
         return (NULL);
-    alt_pos.x += (beg.x < end.x) ? 2560.0 : -2560.0;
+    w_width = (int)w_width;
+    alt_pos.x += (beg.x < end.x) ? w_width : -w_width;
     path->pos = beg;
     path->end = end;
     if (fabs(end.x - beg.x) <= fabs(end.x - alt_pos.x))
@@ -43,7 +44,7 @@ sfVector2f get_step_offset(sfVector2f point_a, sfVector2f point_b)
     return (offset);
 }
 
-path_t *get_random_path(tower_t **towers)
+path_t *get_random_path(tower_t **towers, uint w_width)
 {
     sfVector2f beg;
     sfVector2f end;
@@ -53,5 +54,5 @@ path_t *get_random_path(tower_t **towers)
     end = get_random_tower_pos(towers);
     while (pos_match(beg, end))
         end = get_random_tower_pos(towers);
-    return (path_create(beg, end, speed));
+    return (path_create(beg, end, speed, w_width));
 }
