@@ -10,8 +10,8 @@
 #include "collisions.h"
 #include "utils.h"
 
-sfBool plane_collided(plane_t *plane, tower_t **towers, quadtree_t *quadtree,
-                        unsigned int c_time)
+plane_t *get_collided_plane(plane_t *plane, tower_t **towers,
+                            quadtree_t *quadtree)
 {
     if (plane_is_in_control_area(plane->hitbox, towers)) {
         sfRectangleShape_setOutlineColor(plane->outline, sfGreen);
@@ -19,7 +19,7 @@ sfBool plane_collided(plane_t *plane, tower_t **towers, quadtree_t *quadtree,
     } else {
         sfRectangleShape_setOutlineColor(plane->outline, sfYellow);
     }
-    return (plane_check_collisions(plane, towers, quadtree, c_time));
+    return (plane_check_collisions(plane, quadtree));
 }
 
 sfBool plane_is_in_control_area(sfFloatRect hitbox, tower_t **towers)
@@ -30,21 +30,16 @@ sfBool plane_is_in_control_area(sfFloatRect hitbox, tower_t **towers)
     return (sfFalse);
 }
 
-sfBool plane_check_collisions(plane_t *plane, tower_t **towers,
-                            quadtree_t *quadtree, unsigned int c_time)
+plane_t *plane_check_collisions(plane_t *plane, quadtree_t *quadtree)
 {
     sfIntRect area = (sfIntRect) {plane->path->pos.x - 30.0,
                                 plane->path->pos.y - 30.0, 50, 50};
     plane_t **planes = quadtree_query(quadtree, area);
 
     if (!planes)
-        return (sfFalse);
-    for (unsigned int i = 0 ; planes[i] ; i++) {
-        if (!(pos_match(plane->path->pos, planes[i]->path->pos))) {
-            plane_reset_random(plane, towers, c_time);
-            plane_reset_random(planes[i], towers, c_time);
-            return (sfTrue);
-        }
-    }
-    return (sfFalse);
+        return (NULL);
+    for (unsigned int i = 0 ; planes[i] ; i++)
+        if (!(pos_match(plane->path->pos, planes[i]->path->pos)))
+            return (planes[i]);
+    return (NULL);
 }
