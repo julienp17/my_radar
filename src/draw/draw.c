@@ -28,8 +28,8 @@ void draw_pause_menu(window_t *window)
 
     sfRectangleShape_setFillColor(pause_menu, pause_color);
     sfRectangleShape_setSize(pause_menu, window_size);
-    sfRenderWindow_drawRectangleShape(window->window, pause_menu, NULL);
-    sfRenderWindow_display(window->window);
+    sfRenderWindow_drawRectangleShape(window->render, pause_menu, NULL);
+    sfRenderWindow_display(window->render);
     sfRectangleShape_destroy(pause_menu);
 }
 
@@ -45,7 +45,7 @@ void draw_timer(window_t *window, sfClock *clock)
     sfText_setColor(str_time, sfBlack);
     sfText_setString(str_time, my_int_to_strnum(time));
     sfText_setPosition(str_time, pos);
-    sfRenderWindow_drawText(window->window, str_time, NULL);
+    sfRenderWindow_drawText(window->render, str_time, NULL);
     sfText_destroy(str_time);
     sfFont_destroy(font);
 }

@@ -15,8 +15,8 @@ void sim_poll_events(sim_t *sim)
 {
     sfEvent event;
 
-    while (sfRenderWindow_pollEvent(sim->window->window, &event)) {
-        check_window_quit(&event, sim->window->window);
+    while (sfRenderWindow_pollEvent(sim->window->render, &event)) {
+        check_window_quit(&event, sim->window->render);
         if (event.key.code == sfKeySpace)
             pause_sim(sim);
     }

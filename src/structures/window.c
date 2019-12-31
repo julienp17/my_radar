@@ -17,18 +17,18 @@ window_t *window_create(unsigned int width, unsigned int height,
 
     if (!window)
         return (NULL);
-    window->window = sfRenderWindow_create(mode, window_title,
+    window->render = sfRenderWindow_create(mode, window_title,
                                         sfClose | sfFullscreen, NULL);
     window->width = width;
     window->height = height;
     window->background = sfSprite_create();
-    sfRenderWindow_setFramerateLimit(window->window, W_MAX_FPS);
+    sfRenderWindow_setFramerateLimit(window->render, W_MAX_FPS);
     return (window);
 }
 
 void window_destroy(window_t *window)
 {
-    sfRenderWindow_destroy(window->window);
+    sfRenderWindow_destroy(window->render);
     if (window->background)
         sfSprite_destroy(window->background);
     if (window)
