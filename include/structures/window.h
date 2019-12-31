@@ -20,12 +20,11 @@
         sfRenderWindow *window;
         unsigned int width;
         unsigned int height;
-        sfTexture *bg_texture;
-        sfSprite *bg_sprite;
+        sfSprite *background;
     } window_t;
 
     window_t *window_create(unsigned int width, unsigned int height,
-                            char const *title, char const *bg_img_path);
-    void window_poll_quit(sfRenderWindow *window);
+                            char const *window_title);
     void window_destroy(window_t *window);
+    void window_set_background(window_t *window, sfTexture *texture);
 #endif

@@ -10,20 +10,18 @@
 #include "window.h"
 
 window_t *window_create(unsigned int width, unsigned int height,
-                        char const *title, char const *bg_img_path)
+                            char const *window_title)
 {
     window_t *window = malloc(sizeof(*window));
     sfVideoMode mode = {width, height, W_BPP};
 
     if (!window)
         return (NULL);
-    window->window = sfRenderWindow_create(mode, title, sfClose | sfFullscreen,
-                                            NULL);
+    window->window = sfRenderWindow_create(mode, window_title,
+                                        sfClose | sfFullscreen, NULL);
     window->width = width;
     window->height = height;
-    window->bg_texture = sfTexture_createFromFile(bg_img_path, NULL);
-    window->bg_sprite = sfSprite_create();
-    sfSprite_setTexture(window->bg_sprite, window->bg_texture, sfTrue);
+    window->background = sfSprite_create();
     sfRenderWindow_setFramerateLimit(window->window, W_MAX_FPS);
     return (window);
 }
@@ -31,7 +29,15 @@ window_t *window_create(unsigned int width, unsigned int height,
 void window_destroy(window_t *window)
 {
     sfRenderWindow_destroy(window->window);
-    sfTexture_destroy(window->bg_texture);
-    sfSprite_destroy(window->bg_sprite);
-    free(window);
+    if (window->background)
+        sfSprite_destroy(window->background);
+    if (window)
+        free(window);
+}
+
+void window_set_background(window_t *window, sfTexture *texture)
+{
+    if (!(window->background))
+        window->background = sfSprite_create();
+    sfSprite_setTexture(window->background, texture, sfTrue);
 }
