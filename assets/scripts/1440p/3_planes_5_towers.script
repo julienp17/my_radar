@@ -1,8 +1,0 @@
-A 630 415 2070 550 5 0     // USA -> china
-A 1380 220 930 850 2 0     // estonia -> brazil
-A 2265 1160 630 415 3 0    // autralia -> USA
-T 630 415 95               // USA
-T 930 850 85               // brazil
-T 1380 220 70              // estonia
-T 2070 550 135             // china
-T 2265 1160 75             // australia

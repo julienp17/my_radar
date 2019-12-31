@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from sys import argv, stderr
-from random import sample, randint
+from random import sample, randint, shuffle
 
 class Tower:
 
@@ -41,29 +41,33 @@ class Plane:
 if len(argv) != 3:
     print("Incorrect nb of arguments", file = stderr)
     quit(1)
-try:
-    file = open(argv[1], "r")
-except OSError:
-    print("File couldn't be opened", file = stderr)
+nb_planes = int(argv[1])
+nb_towers = int(argv[2])
+if nb_planes < 0 or nb_towers <= 1:
+    print("Bad arguments", file = stderr)
     quit(1)
 towers = []
 planes = []
+try:
+    file = open(".towers_pos", "r")
+except OSError:
+    print("File couldn't be opened", file = stderr)
+    quit(1)
 for line in file:
     infos = line.split()
     new_tower = Tower(infos[1], infos[2], infos[3], infos[len(infos) - 1])
     towers.append(new_tower)
 file.close()
+shuffle(towers)
+towers = towers[:nb_towers]
 i = 0
-nb_planes = int(argv[2])
 for i in range(nb_planes):
     tower_indexes = sample(range(0, len(towers)), 2)
     plane = Plane(towers[tower_indexes[0]], towers[tower_indexes[1]])
     planes.append(plane)
-script = str()
-for plane in planes:
-    script += (str(plane) + "\n")
-for tower in towers:
-    script += (str(tower) + "\n")
-filename = str(nb_planes) + "_planes_" + str(len(towers)) + "_towers.script"
+filename = argv[1] + "_planes_" + argv[2] + "_towers.script"
 with open(filename, "w") as file:
-    file.write(script)
+    for plane in planes:
+        file.write(str(plane) + "\n")
+    for tower in towers:
+        file.write(str(tower) + "\n")
