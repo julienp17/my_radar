@@ -15,12 +15,8 @@
 #include "utils.h"
 #include "collisions.h"
 
-int my_radar(char const *script_path)
+void launch_simulation(sim_t *sim)
 {
-    sim_t *sim = sim_create_from_script(script_path);
-
-    if (sim == NULL)
-        return (MY_EXIT_FAILURE);
     while (sfRenderWindow_isOpen(sim->window->window)) {
         sim_poll_events(sim);
         if (!(sim->is_paused)) {
@@ -29,8 +25,6 @@ int my_radar(char const *script_path)
             sfRenderWindow_display(sim->window->window);
         }
     }
-    sim_destroy(sim);
-    return (MY_EXIT_SUCCESS);
 }
 
 void simulation_loop(sim_t *sim)
