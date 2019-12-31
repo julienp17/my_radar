@@ -22,7 +22,9 @@ SRC_F 		=	usage.c \
 				collisions.c \
 				booleans/boundary.c \
 				booleans/pos.c \
-				structures/plane.c \
+				structures/plane/plane_create.c \
+				structures/plane/plane_init.c \
+				structures/plane/plane_move.c \
 				structures/tower.c \
 				structures/window.c \
 				structures/quadtree.c \
