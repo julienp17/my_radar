@@ -17,7 +17,7 @@
     #define W_TITLE         "my_radar"
 
     typedef struct window {
-        sfRenderWindow *window;
+        sfRenderWindow *render;
         unsigned int width;
         unsigned int height;
         sfSprite *background;
