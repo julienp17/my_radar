@@ -17,9 +17,12 @@ sim_textures_t *sim_textures_create(void)
         return (NULL);
     textures->plane = sfTexture_createFromFile(PLANE_TEXTURE_PATH, NULL);
     textures->tower = sfTexture_createFromFile(TOWER_TEXTURE_PATH, NULL);
-    textures->background = sfTexture_createFromFile(BACKGROUND_TEXTURE_PATH,
-                                                        NULL);
-    if (!(textures->plane) || !(textures->tower) || !(textures->background))
+    textures->sim_bg = sfTexture_createFromFile(SIM_BG_TEXTURE_PATH, NULL);
+    textures->start_menu_bg = sfTexture_createFromFile(
+                                START_MENU_BG_TEXTURE_PATH, NULL);
+    if (!(textures->plane) || !(textures->tower))
+        return (NULL);
+    if (!(textures->sim_bg) || !(textures->start_menu_bg))
         return (NULL);
     return (textures);
 }
@@ -30,8 +33,10 @@ void sim_textures_destroy(sim_textures_t *textures)
         sfTexture_destroy(textures->plane);
     if (textures->tower)
         sfTexture_destroy(textures->tower);
-    if (textures->background)
-        sfTexture_destroy(textures->background);
+    if (textures->sim_bg)
+        sfTexture_destroy(textures->sim_bg);
+    if (textures->start_menu_bg)
+        sfTexture_destroy(textures->start_menu_bg);
     if (textures)
         free(textures);
 }

@@ -21,7 +21,6 @@ sim_t *sim_create(void)
         return (NULL);
     sim->textures = sim_textures_create();
     sim->window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
-    window_set_background(sim->window, sim->textures->background);
     sim->quadtree = quadtree_create((sfIntRect) {0, 0, W_WIDTH, W_HEIGHT});
     sim->clock = sfClock_create();
     sim->is_paused = sfFalse;
