@@ -19,8 +19,7 @@ path_t *path_create(sfVector2f beg, sfVector2f end, uint speed, uint w_width)
 
     if (!path)
         return (NULL);
-    w_width = (int)w_width;
-    alt_pos.x += (beg.x < end.x) ? w_width : -w_width;
+    alt_pos.x += (beg.x < end.x) ? (int)w_width : -((int)w_width);
     path->pos = beg;
     path->end = end;
     if (fabs(end.x - beg.x) <= fabs(end.x - alt_pos.x))
