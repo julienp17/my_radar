@@ -10,16 +10,22 @@
 #include <SFML/Graphics.h>
 #include "path.h"
 #include "utils.h"
+#include "math.h"
 
 path_t *path_create(sfVector2f beg, sfVector2f end, unsigned int speed)
 {
     path_t *path = malloc(sizeof(*path));
+    sfVector2f alt_pos = beg;
 
     if (!path)
         return (NULL);
-    path->pos     = beg;
-    path->end     = end;
-    path->step    = get_step_offset(beg, end);
+    alt_pos.x += (beg.x < end.x) ? 2560.0 : -2560.0;
+    path->pos = beg;
+    path->end = end;
+    if (fabs(end.x - beg.x) <= fabs(end.x - alt_pos.x))
+        path->step = get_step_offset(beg, end);
+    else
+        path->step = get_step_offset(alt_pos, end);
     path->step.x *= speed;
     path->step.y *= speed;
     return (path);
