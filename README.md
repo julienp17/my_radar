@@ -5,3 +5,7 @@
 
 There are scripts to test the program under the assets/scripts directory.
 You can make your own with ./script_generator.py
+
+![Start Menu](assets/backgrounds/start_menu.png)
+
+![Simulation Screeshot](assets/backgrounds/sim_screenshot.png)
