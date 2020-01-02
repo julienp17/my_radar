@@ -23,10 +23,10 @@ sim_t *sim_create(void)
     sim->fonts = sim_fonts_create();
     sim->window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
     sim->texts = sim_texts_create(sim->fonts, sim->window);
+    sim->state = sim_states_create();
     sim->quadtree = quadtree_create((sfIntRect) {0, 0,
                                     sim->window->width, sim->window->height});
     sim->clock = sfClock_create();
-    sim->is_paused = sfFalse;
     sim->planes = NULL;
     sim->towers = NULL;
     if (!(sim->textures) || (!sim->window) || !(sim->quadtree) || (!sim->clock))
@@ -52,6 +52,7 @@ void sim_destroy(sim_t *sim)
     sim_textures_destroy(sim->textures);
     sim_fonts_destroy(sim->fonts);
     sim_texts_destroy(sim->texts);
+    sim_states_destroy(sim->state);
     for (unsigned int i = 0 ; sim->towers[i] ; i++)
         tower_destroy(sim->towers[i]);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
