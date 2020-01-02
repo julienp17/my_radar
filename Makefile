@@ -20,7 +20,6 @@ SRC_F 		=	usage.c \
 				draw/draw_quadtree.c \
 				draw/draw_timer.c \
 				events/poll_events.c \
-				events/pause_sim.c \
 				utilities/geometry.c \
 				utilities/positions_checking.c \
 				utilities/get_box_corners.c \
@@ -37,6 +36,7 @@ SRC_F 		=	usage.c \
 				structures/sim/sim_fonts.c \
 				structures/sim/sim_textures.c \
 				structures/sim/sim_texts.c \
+				structures/sim/sim_states.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
