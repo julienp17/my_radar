@@ -8,6 +8,8 @@
 #ifndef DRAW_H_
     #define DRAW_H_
 
+    #include <SFML/Graphics.h>
+    #include "utils.h"
     #include "window.h"
     #include "plane.h"
     #include "tower.h"
@@ -15,5 +17,5 @@
     void draw_towers(sfRenderWindow *window, tower_t **towers);
     void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree);
     void draw_pause_menu(window_t *window);
-    void draw_timer(window_t *window, unsigned int c_time);
+    void draw_timer(sfRenderWindow *window, text_t *timer_text, uint c_time);
 #endif
