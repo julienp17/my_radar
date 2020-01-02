@@ -17,6 +17,9 @@
 
 void launch_simulation(sim_t *sim)
 {
+    window_set_background(sim->window, sim->textures->sim_bg);
+    sfClock_restart(sim->clock);
+
     while (sfRenderWindow_isOpen(sim->window->render)) {
         sim_poll_events(sim);
         if (!(sim->is_paused)) {
@@ -29,7 +32,7 @@ void launch_simulation(sim_t *sim)
 
 void simulation_loop(sim_t *sim)
 {
-    unsigned int c_time = sfTime_asSeconds(sfClock_getElapsedTime(sim->clock));
+    uint c_time = sfTime_asSeconds(sfClock_getElapsedTime(sim->clock));
 
     quadtree_clear(sim->quadtree);
     insert_planes_in_quadtree(sim->planes, sim->quadtree, c_time);
@@ -37,9 +40,10 @@ void simulation_loop(sim_t *sim)
     draw_towers(sim->window->render, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, c_time);
+    draw_timer(sim->window->render, sim->texts->timer, c_time);
 }
 
-void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time)
+void plane_loop(plane_t *plane, sim_t *sim, uint c_time)
 {
     plane_t *coll_plane = NULL;
 
@@ -59,7 +63,7 @@ void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time)
 }
 
 void insert_planes_in_quadtree(plane_t **planes, quadtree_t *quadtree,
-                            unsigned int c_time)
+                                uint c_time)
 {
     for (unsigned int i = 0 ; planes[i] ; i++)
         if (planes[i]->delay <= c_time)
