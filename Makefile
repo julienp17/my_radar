@@ -34,6 +34,7 @@ SRC_F 		=	usage.c \
 				structures/quadtree/quadtree.c \
 				structures/quadtree/quadtree_query.c \
 				structures/sim/sim.c \
+				structures/sim/sim_fonts.c \
 				structures/sim/sim_textures.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
