@@ -15,11 +15,13 @@
     #define PLANE_TEXTURE_PATH         "assets/textures/plane.png"
     #define TOWER_TEXTURE_PATH         "assets/textures/tower.png"
 
+    typedef sfTexture texture_t;
+
     typedef struct sim_textures {
-        sfTexture *start_menu_bg;
-        sfTexture *sim_bg;
-        sfTexture *plane;
-        sfTexture *tower;
+        texture_t *start_menu_bg;
+        texture_t *sim_bg;
+        texture_t *plane;
+        texture_t *tower;
     } sim_textures_t;
 
     sim_textures_t *sim_textures_create(void);
