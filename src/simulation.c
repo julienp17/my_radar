@@ -22,11 +22,9 @@ void launch_simulation(sim_t *sim)
 
     while (sfRenderWindow_isOpen(sim->window->render)) {
         sim_poll_events(sim);
-        if (!(sim->is_paused)) {
-            sfRenderWindow_clear(sim->window->render, sfWhite);
-            simulation_loop(sim);
-            sfRenderWindow_display(sim->window->render);
-        }
+        sfRenderWindow_clear(sim->window->render, sfWhite);
+        simulation_loop(sim);
+        sfRenderWindow_display(sim->window->render);
     }
 }
 
