@@ -36,6 +36,7 @@ SRC_F 		=	usage.c \
 				structures/sim/sim.c \
 				structures/sim/sim_fonts.c \
 				structures/sim/sim_textures.c \
+				structures/sim/sim_texts.c \
 				structures/path.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
