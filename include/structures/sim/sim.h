@@ -16,17 +16,19 @@
     #include "sim_textures.h"
     #include "sim_fonts.h"
     #include "sim_texts.h"
+    #include "sim_states.h"
+
 
     typedef struct simulation {
         window_t *window;
         quadtree_t *quadtree;
         plane_t **planes;
         tower_t **towers;
-        sim_textures_t *textures;
-        sim_fonts_t *fonts;
-        sim_texts_t *texts;
+        textures_t *textures;
+        fonts_t *fonts;
+        texts_t *texts;
+        states_t *state;
         sfClock *clock;
-        sfBool is_paused;
     } sim_t;
 
     sim_t *sim_create_from_script(char const *filepath);
