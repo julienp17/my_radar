@@ -14,5 +14,4 @@
     void start_menu_poll_events(sfRenderWindow *render, int *exit_code);
     void sim_poll_events(sim_t *sim);
     void check_window_quit(sfEvent *event, sfRenderWindow *window);
-    void pause_sim(sim_t *sim);
 #endif
