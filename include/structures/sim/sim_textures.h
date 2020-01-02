@@ -23,6 +23,7 @@
         texture_t *plane;
         texture_t *tower;
     } sim_textures_t;
+    typedef sim_textures_t textures_t;
 
     sim_textures_t *sim_textures_create(void);
     void sim_textures_destroy(sim_textures_t *);

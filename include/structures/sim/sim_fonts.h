@@ -19,6 +19,7 @@
         font_t *skyfont;
         font_t *falling_sky;
     } sim_fonts_t;
+    typedef sim_fonts_t fonts_t;
 
     sim_fonts_t *sim_fonts_create(void);
     void sim_fonts_destroy(sim_fonts_t *);
