@@ -34,7 +34,7 @@ void simulation_loop(sim_t *sim)
 
     quadtree_clear(sim->quadtree);
     insert_planes_in_quadtree(sim->planes, sim->quadtree, c_time);
-    sfRenderWindow_drawSprite(sim->window->render,sim->window->background,NULL);
+    draw_background(sim->window->render, sim->window->background);
     draw_towers(sim->window->render, sim->towers);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, c_time);

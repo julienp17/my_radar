@@ -17,7 +17,7 @@ SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				simulation.c \
 				draw/draw_towers.c \
-				draw/draw_quadtree.c \
+				draw/draw_background.c \
 				draw/draw_timer.c \
 				events/poll_events.c \
 				utilities/geometry.c \
@@ -25,11 +25,12 @@ SRC_F 		=	usage.c \
 				utilities/get_box_corners.c \
 				collisions/box_collisions.c \
 				collisions/plane_collisions.c \
+				structures/tower.c \
+				structures/window.c \
+				structures/path.c \
 				structures/plane/plane_create.c \
 				structures/plane/plane_init.c \
 				structures/plane/plane_move.c \
-				structures/tower.c \
-				structures/window.c \
 				structures/quadtree/quadtree.c \
 				structures/quadtree/quadtree_query.c \
 				structures/sim/sim.c \
@@ -37,7 +38,6 @@ SRC_F 		=	usage.c \
 				structures/sim/sim_textures.c \
 				structures/sim/sim_texts.c \
 				structures/sim/sim_states.c \
-				structures/path.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
 

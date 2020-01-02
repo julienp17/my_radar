@@ -15,7 +15,6 @@
     #include "tower.h"
 
     void draw_towers(sfRenderWindow *window, tower_t **towers);
-    void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree);
-    void draw_pause_menu(window_t *window);
+    void draw_background(sfRenderWindow *window, sfSprite *background);
     void draw_timer(sfRenderWindow *window, text_t *timer_text, uint c_time);
 #endif
