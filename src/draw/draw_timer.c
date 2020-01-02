@@ -6,24 +6,16 @@
 */
 
 #include <stdlib.h>
-#include <SFML/Graphics.h>
-#include "window.h"
 #include "my.h"
+#include "sim_texts.h"
+#include "utils.h"
 
 static char *get_str_timer(unsigned int c_time);
 
-void draw_timer(window_t *window, unsigned int c_time)
+void draw_timer(sfRenderWindow *window, text_t *timer_text, unsigned int c_time)
 {
-    sfText *text = sfText_create();
-    sfFont *font = sfFont_createFromFile("assets/fonts/skyfont.otf");
-    sfVector2f pos = {window->width - 250, 0};
-
-    sfText_setCharacterSize(text, 100);
-    sfText_setFont(text, font);
-    sfText_setColor(text, sfBlack);
-    sfText_setString(text, get_str_timer(c_time));
-    sfText_setPosition(text, pos);
-    sfRenderWindow_drawText(window->render, text, NULL);
+    sfText_setString(timer_text, get_str_timer(c_time));
+    sfRenderWindow_drawText(window, timer_text, NULL);
 }
 
 static char *get_str_timer(unsigned int c_time)
