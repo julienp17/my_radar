@@ -5,8 +5,8 @@
 ** Header file for structure sim_fonts
 */
 
-#ifndef fonts_H_
-    #define fonts_H_
+#ifndef FONTS_H_
+    #define FONTS_H_
 
     #include <SFML/Graphics.h>
 
