@@ -36,10 +36,8 @@ int my_radar(char const *script_path)
         return (MY_EXIT_FAILURE);
     }
     window_set_background(sim->window, sim->textures->start_menu_bg);
-    if (start_menu(sim->window->render, sim->window->background) == 1) {
-        window_set_background(sim->window, sim->textures->sim_bg);
+    if (start_menu(sim->window->render, sim->window->background) == 1)
         launch_simulation(sim);
-    }
     sim_destroy(sim);
     return (MY_EXIT_SUCCESS);
 }
