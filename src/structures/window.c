@@ -21,7 +21,7 @@ window_t *window_create(unsigned int width, unsigned int height,
                                         sfClose | sfFullscreen, NULL);
     window->width = width;
     window->height = height;
-    window->background = sfSprite_create();
+    window->background = NULL;
     sfRenderWindow_setFramerateLimit(window->render, W_MAX_FPS);
     return (window);
 }
