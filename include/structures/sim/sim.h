@@ -14,6 +14,7 @@
     #include "plane.h"
     #include "tower.h"
     #include "sim_textures.h"
+    #include "sim_fonts.h"
 
     typedef struct simulation {
         window_t *window;
@@ -21,6 +22,7 @@
         plane_t **planes;
         tower_t **towers;
         sim_textures_t *textures;
+        sim_fonts_t *fonts;
         sfClock *clock;
         sfBool is_paused;
     } sim_t;

@@ -20,6 +20,7 @@ sim_t *sim_create(void)
     if (!sim)
         return (NULL);
     sim->textures = sim_textures_create();
+    sim->fonts = sim_fonts_create();
     sim->window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
     sim->quadtree = quadtree_create((sfIntRect) {0, 0, W_WIDTH, W_HEIGHT});
     sim->clock = sfClock_create();
@@ -58,6 +59,8 @@ void sim_destroy(sim_t *sim)
         sfClock_destroy(sim->clock);
     if (sim->textures)
         sim_textures_destroy(sim->textures);
+    if (sim->fonts)
+        sim_fonts_destroy(sim->fonts);
     if (sim)
         free(sim);
 }
