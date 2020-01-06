@@ -11,6 +11,8 @@
     #include <SFML/Graphics.h>
     #include "sim.h"
 
+    void start_menu_poll_events(sfRenderWindow *render, int *exit_code);
+
     void sim_poll_events(sfRenderWindow *render, states_t *state);
     void check_window_quit(sfEvent *event, sfRenderWindow *window);
     void switch_pressed_key(sfEvent *event, states_t *states);
