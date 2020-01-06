@@ -15,6 +15,7 @@
     #include "tower.h"
     #include "graphical.h"
     #include "sim_states.h"
+    #include "sim_info.h"
 
     typedef struct simulation {
         graphical_t *gl;
@@ -22,6 +23,7 @@
         plane_t **planes;
         tower_t **towers;
         states_t *state;
+        info_t *info;
         sfClock *clock;
     } sim_t;
 
