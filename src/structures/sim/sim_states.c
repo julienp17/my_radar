@@ -16,7 +16,7 @@ sim_states_t *sim_states_create(void)
     if (!states)
         return (NULL);
     states->show_hitbox = sfTrue;
-    states->show_sprites = sfTrue;
+    states->show_sprites = sfFalse;
     return (states);
 }
 
