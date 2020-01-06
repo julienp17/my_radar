@@ -21,6 +21,7 @@ sim_t *sim_create(window_t *window)
         return (NULL);
     sim->gl = gl_create(window);
     sim->state = sim_states_create();
+    sim->info = sim_info_create();
     sim->clock = sfClock_create();
     sim->quadtree = quadtree_create((sfIntRect) {0, 0, sim->gl->window->width,
                                                 sim->gl->window->height});
@@ -46,6 +47,7 @@ void sim_destroy(sim_t *sim)
 {
     gl_destroy(sim->gl);
     sfClock_destroy(sim->clock);
+    sim_info_destroy(sim->info);
     sim_states_destroy(sim->state);
     for (unsigned int i = 0 ; sim->towers[i] ; i++)
         tower_destroy(sim->towers[i]);
