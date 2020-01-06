@@ -40,11 +40,13 @@ SRC_F 		=	usage.c \
 				structures/quadtree/quadtree.c \
 				structures/quadtree/quadtree_query.c \
 				structures/sim/sim.c \
+				structures/sim/sim_states.c \
+				structures/sim/sim_info.c \
 				structures/sim/graphical/graphical.c \
+				structures/sim/graphical/sim_sprites.c \
 				structures/sim/graphical/sim_fonts.c \
 				structures/sim/graphical/sim_textures.c \
 				structures/sim/graphical/sim_texts.c \
-				structures/sim/sim_states.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
 
@@ -58,7 +60,7 @@ SRC_UT_F 	=	test_boundary_overlaps.c \
 
 INC			= 	-I./include/ -I./include/structures/ -I./include/structures/sim/
 
-CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS)
+CFLAGS		= 	-W -Wall -Wextra -Werror $(INC) $(LDFLAGS) $(DBFLAGS)
 
 DBFLAGS		=	-g -g3 -ggdb
 
