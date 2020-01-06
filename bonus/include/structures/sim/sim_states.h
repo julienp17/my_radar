@@ -15,6 +15,7 @@
     typedef struct sim_states {
         Bool show_hitbox;
         Bool show_sprites;
+        Bool show_quadtree;
         Bool is_paused;
     } sim_states_t;
     typedef sim_states_t states_t;
