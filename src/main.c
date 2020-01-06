@@ -28,16 +28,6 @@ int main(int ac, char **av)
         my_puterr("my_radar: Couldn't create window\n");
         return (MY_EXIT_FAILURE);
     }
-    exit_code = my_radar(window, av[1]);
+    exit_code = launch_simulation(window, av[1]);
     return (MY_EXIT_SUCCESS);
-}
-
-int my_radar(window_t *window, char const *script_path)
-{
-    int exit_code = 0;
-
-    exit_code = start_menu(window);
-    if (exit_code == 1)
-        exit_code = launch_simulation(window, script_path);
-    return (exit_code);
 }

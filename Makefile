@@ -16,13 +16,11 @@ OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				simulation.c \
-				start_menu.c \
 				draw/draw_plane.c \
 				draw/draw_towers.c \
 				draw/draw_background.c \
 				draw/draw_timer.c \
 				events/poll_events.c \
-				events/start_menu_poll_events.c \
 				utilities/geometry.c \
 				utilities/positions_checking.c \
 				utilities/get_box_corners.c \
