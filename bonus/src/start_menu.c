@@ -17,7 +17,7 @@ int start_menu(window_t *window)
     sfTexture *bg_texture = NULL;
     int exit_code = 0;
 
-    bg_texture = sfTexture_createFromFile(S_MENU_BG_TEXTURE_PATH, NULL);
+    bg_texture = sfTexture_createFromFile(START_MENU_BG_TEXTURE_PATH, NULL);
     if (bg_texture == NULL) {
         my_puterr("my_radar: Couldn't create start menu background texture\n");
         return (MY_EXIT_FAILURE);
