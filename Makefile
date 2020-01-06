@@ -16,6 +16,7 @@ OBJ 		= 	$(SRC:.c=.o)
 SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				simulation.c \
+				draw/draw_plane.c \
 				draw/draw_towers.c \
 				draw/draw_background.c \
 				draw/draw_timer.c \
