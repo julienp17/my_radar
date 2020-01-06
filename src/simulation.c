@@ -21,7 +21,7 @@ void launch_simulation(sim_t *sim)
     sfClock_restart(sim->clock);
 
     while (sfRenderWindow_isOpen(sim->window->render)) {
-        sim_poll_events(sim);
+        sim_poll_events(sim->window->render, sim->state);
         sfRenderWindow_clear(sim->window->render, sfWhite);
         simulation_loop(sim);
         sfRenderWindow_display(sim->window->render);
@@ -35,7 +35,7 @@ void simulation_loop(sim_t *sim)
     quadtree_clear(sim->quadtree);
     insert_planes_in_quadtree(sim->planes, sim->quadtree, c_time);
     draw_background(sim->window->render, sim->window->background);
-    draw_towers(sim->window->render, sim->towers);
+    draw_towers(sim->window->render, sim->towers, sim->state);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, c_time);
     draw_timer(sim->window->render, sim->texts->timer, c_time);
@@ -53,8 +53,7 @@ void plane_loop(plane_t *plane, sim_t *sim, uint c_time)
         plane_reset_random(coll_plane, sim->towers, c_time, sim->window->width);
         return;
     }
-    sfRenderWindow_drawSprite(sim->window->render, plane->sprite, NULL);
-    sfRenderWindow_drawRectangleShape(sim->window->render,plane->outline, NULL);
+    draw_plane(sim->window->render, plane, sim->state);
     plane_move(plane, plane->path->step, sim->window->width);
     if (pos_are_near(plane->path->pos, plane->path->end, 10.0))
         plane_reset_random(plane, sim->towers, c_time, sim->window->width);
