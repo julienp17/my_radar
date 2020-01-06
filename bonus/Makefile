@@ -40,9 +40,10 @@ SRC_F 		=	usage.c \
 				structures/quadtree/quadtree.c \
 				structures/quadtree/quadtree_query.c \
 				structures/sim/sim.c \
-				structures/sim/sim_fonts.c \
-				structures/sim/sim_textures.c \
-				structures/sim/sim_texts.c \
+				structures/sim/graphical/graphical.c \
+				structures/sim/graphical/sim_fonts.c \
+				structures/sim/graphical/sim_textures.c \
+				structures/sim/graphical/sim_texts.c \
 				structures/sim/sim_states.c \
 				file_manipulation/get_file_buffer.c \
 				file_manipulation/get_entities_from_file.c \
