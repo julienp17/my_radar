@@ -24,7 +24,8 @@
     #define USER_INTERACTIONS                                                  \
     "USER INTERACTIONS\n"                                                      \
     " 'L' key              enable/disable hitboxes and areas.\n"               \
-    " 'S' key              enable/disable sprites.\n"
+    " 'S' key              enable/disable sprites.\n"                          \
+    " 'G' key              enable/disable the grid.\n"
 
     int check_args(int ac, char **av);
     int check_options(char *arg);
