@@ -14,18 +14,26 @@
 #include "events.h"
 #include "utils.h"
 #include "collisions.h"
+#include "my.h"
 
-void launch_simulation(sim_t *sim)
+int launch_simulation(window_t *window, char const *script_path)
 {
+    sim_t *sim = NULL;
+
+    if ((sim = sim_create_from_script(window, script_path)) == NULL) {
+        my_puterr("Simulation couldn't be created.\n");
+        return (MY_EXIT_FAILURE);
+    }
     window_set_background(sim->window, sim->textures->sim_bg);
     sfClock_restart(sim->clock);
-
     while (sfRenderWindow_isOpen(sim->window->render)) {
         sim_poll_events(sim->window->render, sim->state);
         sfRenderWindow_clear(sim->window->render, sfWhite);
         simulation_loop(sim);
         sfRenderWindow_display(sim->window->render);
     }
+    sim_destroy(sim);
+    return (MY_EXIT_SUCCESS);
 }
 
 void simulation_loop(sim_t *sim)
