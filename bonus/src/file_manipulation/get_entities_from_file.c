@@ -46,10 +46,10 @@ int fill_entities_by_line(FILE *stream, sim_t *sim)
     while (getline(&current_line, &size, stream) != -1) {
         if (current_line[0] == PLANE_SYMBOL) {
             sim->planes[plane_index++] = add_plane_from_line(current_line,
-                                    sim->textures->plane, sim->window->width);
+                        sim->gl->textures->plane, sim->gl->window->width);
         } else if (current_line[0] == TOWER_SYMBOL) {
             sim->towers[tower_index++] = add_tower_from_line(current_line,
-                                                sim->textures->tower);
+                        sim->gl->textures->tower);
         } else {
             my_puterr("Unknow char in script file\n");
             return (1);
