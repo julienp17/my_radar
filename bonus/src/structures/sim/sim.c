@@ -19,19 +19,14 @@ sim_t *sim_create(window_t *window)
 
     if (!sim)
         return (NULL);
-    sim->window = window;
-    sim->textures = sim_textures_create();
-    sim->fonts = sim_fonts_create();
+    sim->gl = gl_create(window);
     sim->state = sim_states_create();
     sim->clock = sfClock_create();
-    sim->texts = sim_texts_create(sim->fonts, sim->window);
-    sim->quadtree = quadtree_create((sfIntRect) {0, 0,
-                                    sim->window->width, sim->window->height});
+    sim->quadtree = quadtree_create((sfIntRect) {0, 0, sim->gl->window->width,
+                                                sim->gl->window->height});
     sim->planes = NULL;
     sim->towers = NULL;
-    if (!(sim->textures) || !(sim->fonts) || !(sim->state) || !(sim->texts))
-        return (NULL);
-    if (!(sim->quadtree) || !(sim->clock))
+    if (!(sim->gl) || !(sim->quadtree) || !(sim->clock))
         return (NULL);
     return (sim);
 }
@@ -49,11 +44,8 @@ sim_t *sim_create_from_script(window_t *window, char const *script_path)
 
 void sim_destroy(sim_t *sim)
 {
-    window_destroy(sim->window);
+    gl_destroy(sim->gl);
     sfClock_destroy(sim->clock);
-    sim_textures_destroy(sim->textures);
-    sim_fonts_destroy(sim->fonts);
-    sim_texts_destroy(sim->texts);
     sim_states_destroy(sim->state);
     for (unsigned int i = 0 ; sim->towers[i] ; i++)
         tower_destroy(sim->towers[i]);

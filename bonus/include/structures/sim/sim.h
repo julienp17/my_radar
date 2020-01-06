@@ -13,20 +13,14 @@
     #include "quadtree.h"
     #include "plane.h"
     #include "tower.h"
-    #include "sim_textures.h"
-    #include "sim_fonts.h"
-    #include "sim_texts.h"
+    #include "graphical.h"
     #include "sim_states.h"
 
-
     typedef struct simulation {
-        window_t *window;
+        graphical_t *gl;
         quadtree_t *quadtree;
         plane_t **planes;
         tower_t **towers;
-        textures_t *textures;
-        fonts_t *fonts;
-        texts_t *texts;
         states_t *state;
         sfClock *clock;
     } sim_t;
