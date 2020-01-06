@@ -35,6 +35,8 @@ void print_help(void)
     my_putstr(USAGE);
     my_putchar('\n');
     my_putstr(OPTIONS);
+    my_putchar('\n');
+    my_putstr(USER_INTERACTIONS);
 }
 
 void print_bad_ac(int ac, char **av)

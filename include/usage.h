@@ -21,6 +21,10 @@
     #define OPTIONS                                                            \
     "OPTIONS\n"                                                                \
     " -h | --help          print the usage and quit.\n"
+    #define USER_INTERACTIONS                                                  \
+    "USER INTERACTIONS\n"                                                      \
+    " 'L' key              enable/disable hitboxes and areas.\n"               \
+    " 'S' key              enable/disable sprites.\n"
 
     int check_args(int ac, char **av);
     int check_options(char *arg);
