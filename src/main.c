@@ -15,21 +15,19 @@
 
 int main(int ac, char **av)
 {
-    sim_t *sim = NULL;
-    int error_code = 0;
+    window_t *window = NULL;
+    int exit_code = 0;
 
-    error_code = check_args(ac, av);
-    if (error_code == MY_EXIT_OPTION)
+    exit_code = check_args(ac, av);
+    if (exit_code == MY_EXIT_OPTION)
         return (MY_EXIT_SUCCESS);
-    else if (error_code == MY_EXIT_FAILURE)
-        return (error_code);
+    else if (exit_code == MY_EXIT_FAILURE)
+        return (exit_code);
     srand(time(NULL));
-    sim = sim_create_from_script(av[1]);
-    if (!sim) {
-        my_puterr("Simulation couldn't be created.\n");
+    if ((window = window_create(W_WIDTH, W_HEIGHT, W_TITLE)) == NULL) {
+        my_puterr("my_radar: Couldn't create window\n");
         return (MY_EXIT_FAILURE);
     }
-    launch_simulation(sim);
-    sim_destroy(sim);
-    return (error_code);
+    exit_code = launch_simulation(window, av[1]);
+    return (MY_EXIT_SUCCESS);
 }
