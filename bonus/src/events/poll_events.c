@@ -41,6 +41,9 @@ void switch_pressed_key(sfEvent *event, window_t *window, states_t *states)
     case sfKeySpace:
         pause_sim(window, states);
         break;
+    case sfKeyG:
+        states->show_quadtree = (states->show_quadtree) ? sfFalse : sfTrue;
+        break;
     default:
         break;
     }
