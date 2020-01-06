@@ -7,14 +7,18 @@
 
 #include <SFML/Graphics.h>
 #include "quadtree.h"
+#include "sim_states.h"
 
 static void draw_quadtree_recursively(sfRenderWindow *window,
                             quadtree_t *quadtree, sfRectangleShape *boundary);
 
-void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree)
+void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree,states_t *state)
 {
-    sfRectangleShape *boundary = sfRectangleShape_create();
+    sfRectangleShape *boundary = NULL;
 
+    if (!(state->show_quadtree))
+        return;
+    boundary = sfRectangleShape_create();
     sfRectangleShape_setFillColor(boundary, sfTransparent);
     sfRectangleShape_setOutlineColor(boundary, sfWhite);
     sfRectangleShape_setOutlineThickness(boundary, 2.0);
