@@ -10,6 +10,10 @@
 
     #include <SFML/Graphics.h>
     #include "sim.h"
+    #include "window.h"
+
+    int my_radar(window_t *window, char const *script_path);
+    int start_menu(window_t *window);
 
     int launch_simulation(window_t *window, char const *script_path);
     void simulation_loop(sim_t *sim);
