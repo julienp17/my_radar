@@ -11,10 +11,7 @@
     #include <SFML/Graphics.h>
     #include "sim.h"
 
-    int my_radar(char const *file_script);
-    int start_menu(sfRenderWindow *render, sfSprite *background);
-
-    void launch_simulation(sim_t *sim);
+    int launch_simulation(window_t *window, char const *script_path);
     void simulation_loop(sim_t *sim);
     void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time);
     void insert_planes_in_quadtree(plane_t **planes, quadtree_t *quadtree,
