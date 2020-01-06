@@ -25,7 +25,6 @@ int launch_simulation(window_t *window, char const *script_path)
         return (MY_EXIT_FAILURE);
     }
     window_set_background(sim->window, sim->textures->sim_bg);
-    sfClock_restart(sim->clock);
     while (sfRenderWindow_isOpen(sim->window->render)) {
         sim_poll_events(sim->window, sim->state);
         if (!(sim->state->is_paused)) {
@@ -46,7 +45,7 @@ void simulation_loop(sim_t *sim)
     insert_planes_in_quadtree(sim->planes, sim->quadtree, c_time);
     draw_background(sim->window->render, sim->window->background);
     draw_towers(sim->window->render, sim->towers, sim->state);
-    draw_quadtree(sim->window->render, sim->quadtree);
+    draw_quadtree(sim->window->render, sim->quadtree, sim->state);
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, c_time);
     draw_timer(sim->window->render, sim->texts->timer, c_time);
