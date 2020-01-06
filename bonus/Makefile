@@ -17,6 +17,7 @@ SRC_D 		= 	src/
 SRC_F 		=	usage.c \
 				simulation.c \
 				start_menu.c \
+				draw/draw_sim.c \
 				draw/draw_plane.c \
 				draw/draw_towers.c \
 				draw/draw_background.c \
