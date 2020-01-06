@@ -13,34 +13,36 @@
 #include "plane.h"
 #include "tower.h"
 
-sim_t *sim_create(void)
+sim_t *sim_create(window_t *window)
 {
     sim_t *sim = malloc(sizeof(sim_t));
 
     if (!sim)
         return (NULL);
+    sim->window = window;
     sim->textures = sim_textures_create();
     sim->fonts = sim_fonts_create();
-    sim->window = window_create(W_WIDTH, W_HEIGHT, W_TITLE);
-    sim->texts = sim_texts_create(sim->fonts, sim->window);
     sim->state = sim_states_create();
+    sim->clock = sfClock_create();
+    sim->texts = sim_texts_create(sim->fonts, sim->window);
     sim->quadtree = quadtree_create((sfIntRect) {0, 0,
                                     sim->window->width, sim->window->height});
-    sim->clock = sfClock_create();
     sim->planes = NULL;
     sim->towers = NULL;
-    if (!(sim->textures) || (!sim->window) || !(sim->quadtree) || (!sim->clock))
+    if (!(sim->textures) || !(sim->fonts) || !(sim->state) || !(sim->texts))
+        return (NULL);
+    if (!(sim->quadtree) || !(sim->clock))
         return (NULL);
     return (sim);
 }
 
-sim_t *sim_create_from_script(char const *filepath)
+sim_t *sim_create_from_script(window_t *window, char const *script_path)
 {
-    sim_t *sim = sim_create();
+    sim_t *sim = sim_create(window);
 
     if (!sim)
         return (NULL);
-    if (get_entities_from_file(filepath, sim) != 0)
+    if (get_entities_from_file(script_path, sim) != 0)
         return (NULL);
     return (sim);
 }

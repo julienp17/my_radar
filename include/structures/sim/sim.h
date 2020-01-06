@@ -31,6 +31,7 @@
         sfClock *clock;
     } sim_t;
 
-    sim_t *sim_create_from_script(char const *filepath);
+    sim_t *sim_create(window_t *window);
+    sim_t *sim_create_from_script(window_t *window, char const *filepath);
     void sim_destroy(sim_t *sim);
 #endif
