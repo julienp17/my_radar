@@ -16,6 +16,7 @@
         uint nb_planes;
         uint nb_planes_flying;
         uint nb_towers;
+        uint timer;
     } sim_info_t;
     typedef sim_info_t info_t;
 
