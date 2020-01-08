@@ -17,16 +17,14 @@
 int get_entities_from_file(char const *file_path, sim_t *sim)
 {
     char *file_buffer = get_file_buffer(file_path);
-    unsigned int nb_planes = 0;
-    unsigned int nb_towers = 0;
     FILE *stream = NULL;
 
     if (!file_buffer)
         return (1);
-    nb_planes = my_count_char(file_buffer, PLANE_SYMBOL);
-    nb_towers = my_count_char(file_buffer, TOWER_SYMBOL);
-    sim->planes = malloc(sizeof(plane_t *) * (nb_planes + 1));
-    sim->towers = malloc(sizeof(tower_t *) * (nb_towers + 1));
+    sim->info->nb_planes = my_count_char(file_buffer, PLANE_SYMBOL);
+    sim->info->nb_towers = my_count_char(file_buffer, TOWER_SYMBOL);
+    sim->planes = malloc(sizeof(plane_t *) * (sim->info->nb_planes + 1));
+    sim->towers = malloc(sizeof(tower_t *) * (sim->info->nb_towers + 1));
     stream = fopen(file_path, "r");
     if (!(sim->planes) || !(sim->towers) || !(stream))
         return (1);
