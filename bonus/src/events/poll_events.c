@@ -38,11 +38,14 @@ void switch_pressed_key(sfEvent *event, window_t *window, states_t *states)
     case sfKeyS:
         states->show_sprites = (states->show_sprites) ? sfFalse : sfTrue;
         break;
-    case sfKeySpace:
-        pause_sim(window, states);
-        break;
     case sfKeyG:
         states->show_quadtree = (states->show_quadtree) ? sfFalse : sfTrue;
+        break;
+    case sfKeyI:
+        states->show_info = (states->show_info) ? sfFalse : sfTrue;
+        break;
+    case sfKeySpace:
+        pause_sim(window, states);
         break;
     default:
         break;
