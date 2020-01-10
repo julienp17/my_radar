@@ -13,15 +13,18 @@
     #include "window.h"
     #include "plane.h"
     #include "tower.h"
+    #include "timeframe.h"
 
     void draw_sim(sim_t *sim);
 
     void draw_background(window_t *window, sfSprite *background,
-                        sfSprite **timelapse);
+                        timelapse_t *timelapse);
     void draw_timer(sfRenderWindow *window, text_t *timer_text, uint c_time);
     void draw_plane(sfRenderWindow *render, plane_t *plane, states_t *states);
     void draw_towers(sfRenderWindow *window, tower_t **, states_t *states);
     void draw_pause_menu(window_t *window);
     void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree,
                         states_t *states);
+    void draw_info(sfRenderWindow *render, info_t *info, texts_t *texts,
+                states_t *states);
 #endif
