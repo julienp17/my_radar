@@ -16,9 +16,11 @@
 
     typedef struct sim_texts {
         text_t *timer;
+        text_t *nb_planes;
+        text_t *nb_towers;
     } sim_texts_t;
     typedef sim_texts_t texts_t;
 
-    sim_texts_t *sim_texts_create(sim_fonts_t *fonts, window_t *window);
+    texts_t *sim_texts_create(window_t *window, fonts_t *fonts);
     void sim_texts_destroy(sim_texts_t *);
 #endif

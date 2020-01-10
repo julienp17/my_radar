@@ -16,6 +16,7 @@
         Bool show_hitbox;
         Bool show_sprites;
         Bool show_quadtree;
+        Bool show_info;
         Bool is_paused;
     } sim_states_t;
     typedef sim_states_t states_t;
