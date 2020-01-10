@@ -23,6 +23,7 @@ SRC_F 		=	usage.c \
 				draw/draw_background.c \
 				draw/draw_timer.c \
 				draw/draw_pause_menu.c \
+				draw/draw_info.c \
 				draw/draw_quadtree.c \
 				events/poll_events.c \
 				events/start_menu_poll_events.c \
@@ -30,6 +31,8 @@ SRC_F 		=	usage.c \
 				utilities/geometry.c \
 				utilities/positions_checking.c \
 				utilities/get_box_corners.c \
+				utilities/get_percentage.c \
+				utilities/sprite_opacity.c \
 				collisions/box_collisions.c \
 				collisions/plane_collisions.c \
 				structures/tower.c \
@@ -44,7 +47,8 @@ SRC_F 		=	usage.c \
 				structures/sim/sim_states.c \
 				structures/sim/sim_info.c \
 				structures/sim/graphical/graphical.c \
-				structures/sim/graphical/sim_sprites.c \
+				structures/sim/graphical/timeframe.c \
+				structures/sim/graphical/timelapse.c \
 				structures/sim/graphical/sim_fonts.c \
 				structures/sim/graphical/sim_textures.c \
 				structures/sim/graphical/sim_texts.c \

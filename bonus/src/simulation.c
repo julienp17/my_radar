@@ -39,16 +39,18 @@ int launch_simulation(window_t *window, char const *script_path)
 
 void simulation_loop(sim_t *sim)
 {
-    uint c_time = sfTime_asSeconds(sfClock_getElapsedTime(sim->clock));
-
+    if (sfTime_asSeconds(sfClock_getElapsedTime(sim->clock)) > 1) {
+        sim->info->fps = sim->info->frame_count;
+        sim->info->frame_count = 0;
+        sim->info->timer++;
+        sfClock_restart(sim->clock);
+    }
+    sim->info->frame_count++;
     quadtree_clear(sim->quadtree);
-    insert_planes_in_quadtree(sim->planes, sim->quadtree, c_time);
-    draw_background(sim->gl->window->render, sim->gl->window->background);
-    draw_towers(sim->gl->window->render, sim->towers, sim->state);
-    draw_quadtree(sim->gl->window->render, sim->quadtree, sim->state);
-    for (unsigned int i = 0 ; sim->planes[i] ; i++)
-        plane_loop(sim->planes[i], sim, c_time);
-    draw_timer(sim->gl->window->render, sim->gl->texts->timer, c_time);
+    insert_planes_in_quadtree(sim->planes, sim->quadtree, sim->info->timer);
+    sim->info->nb_planes_flying = sim->quadtree->nb_planes;
+    update_info_text(sim->gl->texts, sim->info);
+    draw_sim(sim);
 }
 
 void plane_loop(plane_t *plane, sim_t *sim, uint c_time)
@@ -75,4 +77,12 @@ void insert_planes_in_quadtree(plane_t **planes, quadtree_t *quadtree,
     for (unsigned int i = 0 ; planes[i] ; i++)
         if (planes[i]->delay <= c_time)
             quadtree_insert(quadtree, planes[i]);
+}
+
+void update_info_text(texts_t *texts, info_t *info)
+{
+    sfText_setString(texts->fps, my_strdupcat(
+                    "FPS : ", my_int_to_strnum(info->fps)));
+    sfText_setString(texts->nb_planes_flying, my_strdupcat(
+                "Flying planes : ", my_int_to_strnum(info->nb_planes_flying)));
 }

@@ -18,5 +18,5 @@ void draw_sim(sim_t *sim)
     for (unsigned int i = 0 ; sim->planes[i] ; i++)
         plane_loop(sim->planes[i], sim, sim->info->timer);
     draw_timer(sim->gl->window->render, sim->gl->texts->timer,sim->info->timer);
-    draw_info(sim->gl->window->render, sim->info, sim->gl->texts, sim->state);
+    draw_info(sim->gl->window->render, sim->gl->texts, sim->state);
 }

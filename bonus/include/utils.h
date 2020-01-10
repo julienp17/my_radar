@@ -29,4 +29,8 @@
                         sfVector2f circle_center, unsigned int circle_radius);
     sfBool point_is_in_circle(sfVector2f point, sfVector2f circle_center,
                             unsigned int circle_radius);
+
+    unsigned int get_percentage(unsigned int nb, unsigned int percentage);
+    unsigned char get_sprite_opacity(sfSprite *sprite);
+    void set_sprite_opacity(sfSprite *sprite, unsigned char opacity);
 #endif

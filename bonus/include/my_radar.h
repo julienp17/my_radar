@@ -20,4 +20,5 @@
     void plane_loop(plane_t *plane, sim_t *sim, unsigned int c_time);
     void insert_planes_in_quadtree(plane_t **planes, quadtree_t *quadtree,
                                 unsigned int c_time);
+    void update_info_text(texts_t *texts, info_t *info);
 #endif

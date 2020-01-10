@@ -25,6 +25,5 @@
     void draw_pause_menu(window_t *window);
     void draw_quadtree(sfRenderWindow *window, quadtree_t *quadtree,
                         states_t *states);
-    void draw_info(sfRenderWindow *render, info_t *info, texts_t *texts,
-                states_t *states);
+    void draw_info(sfRenderWindow *render,texts_t *texts, states_t *states);
 #endif
