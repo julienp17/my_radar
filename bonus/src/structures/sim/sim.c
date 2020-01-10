@@ -12,6 +12,7 @@
 #include "window.h"
 #include "plane.h"
 #include "tower.h"
+#include "my.h"
 
 sim_t *sim_create(window_t *window)
 {
@@ -40,6 +41,10 @@ sim_t *sim_create_from_script(window_t *window, char const *script_path)
         return (NULL);
     if (get_entities_from_file(script_path, sim) != 0)
         return (NULL);
+    sfText_setString(sim->gl->texts->nb_planes, my_strdupcat(
+        "Total planes : ", my_int_to_strnum(sim->info->nb_planes)));
+    sfText_setString(sim->gl->texts->nb_towers, my_strdupcat(
+        "Total towers : ", my_int_to_strnum(sim->info->nb_towers)));
     return (sim);
 }
 

@@ -18,6 +18,8 @@ sim_info_t *sim_info_create(void)
     info->nb_planes = 0;
     info->nb_planes_flying = 0;
     info->nb_towers = 0;
+    info->fps = 0;
+    info->frame_count = 0;
     info->timer = 0;
     return (info);
 }

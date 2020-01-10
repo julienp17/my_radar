@@ -16,7 +16,9 @@
 
     typedef struct sim_texts {
         text_t *timer;
+        text_t *fps;
         text_t *nb_planes;
+        text_t *nb_planes_flying;
         text_t *nb_towers;
     } sim_texts_t;
     typedef sim_texts_t texts_t;
