@@ -17,19 +17,21 @@ graphical_t *gl_create(window_t *window)
         return (NULL);
     gl->window = window;
     gl->fonts = sim_fonts_create();
-    gl->texts = sim_texts_create(gl->fonts, window);
+    gl->texts = sim_texts_create(window, gl->fonts);
     gl->textures = sim_textures_create();
-    if (!(gl->window) || !(gl->fonts) || !(gl->texts) || !(gl->textures))
+    gl->timelapse = timelapse_create(window, gl->textures->sim_bg_night);
+    if (!(gl->timelapse) || !(gl->fonts) || !(gl->texts) || !(gl->textures))
         return (NULL);
     return (gl);
 }
 
-void gl_destroy(graphical_t *graphical)
+void gl_destroy(graphical_t *gl)
 {
-    sim_fonts_destroy(graphical->fonts);
-    sim_textures_destroy(graphical->textures);
-    sim_texts_destroy(graphical->texts);
-    window_destroy(graphical->window);
-    if (graphical)
-        free(graphical);
+    timelapse_destroy(gl->timelapse);
+    sim_fonts_destroy(gl->fonts);
+    sim_textures_destroy(gl->textures);
+    sim_texts_destroy(gl->texts);
+    window_destroy(gl->window);
+    if (gl)
+        free(gl);
 }

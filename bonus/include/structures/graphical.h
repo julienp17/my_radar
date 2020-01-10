@@ -12,9 +12,11 @@
     #include "sim_fonts.h"
     #include "sim_texts.h"
     #include "sim_textures.h"
+    #include "timelapse.h"
 
     typedef struct graphical {
         window_t *window;
+        timelapse_t *timelapse;
         textures_t *textures;
         fonts_t *fonts;
         texts_t *texts;
