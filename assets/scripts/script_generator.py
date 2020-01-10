@@ -3,6 +3,12 @@
 from sys import argv, stderr
 from random import sample, randint, shuffle
 
+USAGE = """USAGE:
+./script_generator  nb_planes nb_towers
+
+nb_planes           integer between 0 and infinity
+nb_towers           integer between 2 and 35"""
+
 class Tower:
 
     def __init__(self, x: int, y: int, radius: int, country: str):
@@ -38,13 +44,16 @@ class Plane:
                 self.departure_country,
                 self.arrival_country)
 
+if len(argv) == 2 and (argv[1] == "-h" or argv[1] == "--help"):
+    print(USAGE)
+    quit(0)
 if len(argv) != 3:
-    print("Incorrect nb of arguments", file = stderr)
+    print("Incorrect number of arguments\n\n" + USAGE, file = stderr)
     quit(1)
 nb_planes = int(argv[1])
 nb_towers = int(argv[2])
-if nb_planes < 0 or nb_towers <= 1:
-    print("Bad arguments", file = stderr)
+if nb_planes < 0 or (nb_towers < 2 or nb_towers > 35):
+    print(USAGE, file = stderr)
     quit(1)
 towers = []
 planes = []
@@ -71,3 +80,4 @@ with open(filename, "w") as file:
         file.write(str(plane) + "\n")
     for tower in towers:
         file.write(str(tower) + "\n")
+quit(0)
