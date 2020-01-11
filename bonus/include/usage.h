@@ -25,7 +25,7 @@
     "USER INTERACTIONS\n"                                                      \
     " 'L' key              enable/disable hitboxes and areas.\n"               \
     " 'S' key              enable/disable sprites.\n"                          \
-    " 'G' key              enable/disable the grid.\n"                         \
+    " 'G' key              enable/disable the quadtree grid.\n"                \
     " 'I' key              enable/disable simulation info.\n"                  \
     " 'Space' key          pause the simulation.\n"
 
