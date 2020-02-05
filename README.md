@@ -44,4 +44,4 @@ You can make your own with ./script_generator.py :
 
 ### Video preview
 
-[Click here to see a video preview](https://www.youtube.com/watch?v=ueOi5slIU2E)
+[Click here to see a video preview](https://www.youtube.com/watch?v=P4hhDQJPtls)
